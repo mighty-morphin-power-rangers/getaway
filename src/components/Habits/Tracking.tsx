@@ -10,24 +10,27 @@ import Box from '@mui/material/Box';
 
 interface TrackingProps {
   id: number;
-  habit_createdAt: string;
+   habit_createdAt: string;
+   
+   
+
 }
 
 // This will have charts and a calaneder to see how the following  is going
-const Tracking = ({ id, habit_createdAt }: TrackingProps) => {
+const Tracking = ({id, habit_createdAt}:TrackingProps) =>{
+
   const [dates, setDates] = useState<[]>([]);
-  console.log(habit_createdAt);
-  useEffect(() => {
-    {
-      axios
-        .get(`habits/updatedon/:${id}`)
-        .then((response) => {
-          console.log(response.data);
-          setDates(response.data);
-        })
-        .catch((error) => console.error(error));
-    }
-  }, []);
+  console.log(habit_createdAt)
+   useEffect(() => {
+      {
+    axios.get(`habits/updatedon/:${id}`)
+      .then(response => {
+        console.log(response.data)
+setDates(response.data)
+      })
+      .catch(error => console.error(error));
+  }
+}, []);
 
   return (
     <Card>

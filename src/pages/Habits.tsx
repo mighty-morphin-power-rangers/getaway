@@ -22,27 +22,22 @@ type Option = {
   type: string;
 };
 
-const Habits = () => {
-  // creates user variables based on context
-  const { userName, userId }: UserContextType = useContext(UserContext) ?? {
-    userName: null,
-    userId: null,
-  };
-  console.log(userName, userId);
-  const types: Option[] = [
-    {
-      type: 'Excersize',
-    },
-    {
-      type: 'Eating',
-    },
-    {
-      type: 'Focus',
-    },
-    {
-      type: 'Choices',
-    },
-  ];
+const Habits = () =>{
+
+  // creates user variables based on context 
+   const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };;
+   console.log(userName, userId)
+const types:Option[] = [
+  {
+    type: "Exercise"
+  }, {
+    type: "Eating"
+  }, {
+    type: "Focus"
+  }, {
+    type: "Choices"
+  }
+]
 
   const [habits, setHabits] = useState<Habits[]>([]);
   const [newHabit, setNewHabit] = useState<string>('');

@@ -14,7 +14,7 @@ interface HabitCardProps {
   id: number;
   habit_name: string;
   habit_type: string;
-  userId: number;
+  userId: string | null;
    habit_createdAt: string;
    onDelete: () => void;
 }
@@ -22,7 +22,7 @@ interface HabitCardProps {
 const HabitCard = ({ id, habit_name, habit_type,userId,habit_createdAt, onDelete }: HabitCardProps) =>{
 
   const [isTrackingOpen, setIsTrackingOpen] = useState(false);
-console.log(userId)
+// console.log(userId)
   const openTracking = () => {
     setIsTrackingOpen(!isTrackingOpen);
   }
@@ -31,7 +31,7 @@ console.log(userId)
     axios.post('/habits/completed', {
   data: {
      habit:  id ,
-  user: userId.toString() ,
+  user: userId ,
 
   }
 })
