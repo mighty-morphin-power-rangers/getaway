@@ -32,7 +32,10 @@ const Guidance = () =>{
     }
   }, [geolocationLoaded, userLat, userLong])
 
-
+ useEffect(()=>{
+getAllTherapists()
+ },[])
+ 
 const getAllTherapists = ()=>{
   
   axios.get('/therapist/search', {
