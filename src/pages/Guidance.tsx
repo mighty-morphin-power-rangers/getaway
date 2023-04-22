@@ -19,8 +19,8 @@ const Guidance = () =>{
     //function get the user lat and long
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords
-      setLat(latitude);
-      setLong(longitude);
+      setLat(29.951065);
+      setLong(-90.071533);
       setGeolocationLoaded(true);
     });
   }, [])
@@ -37,8 +37,8 @@ const getAllTherapists = ()=>{
   
   axios.get('/therapist/search', {
     params:{
-      lat: 29.951065,
-      long: -90.071533
+      lat: userLat,
+      long: userLong
     }
   })
   .then((response)=>{
