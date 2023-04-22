@@ -66,7 +66,7 @@ const getNextTwenty = () =>{
   })
 }
 
-console.log('hi',therapists)
+console.log(userLat, userLong)
 
   return (
 
