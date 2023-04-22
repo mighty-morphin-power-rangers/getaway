@@ -9,8 +9,8 @@ import FavTherapist from "../components/FavTherapist"
 
 const Guidance = () =>{
 
-  const [userLat, setLat] = useState(0);
-  const [userLong, setLong] = useState(0);
+  const [userLat, setLat] = useState(29.951065);
+  const [userLong, setLong] = useState(-90.071533);
   const [pagetoken, setpagetoken] = useState(null);
   const [geolocationLoaded, setGeolocationLoaded] = useState(false);
   const [therapists, setTherapists] = useState([]);
