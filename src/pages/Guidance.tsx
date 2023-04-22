@@ -34,10 +34,11 @@ const Guidance = () =>{
 
 
 const getAllTherapists = ()=>{
+  
   axios.get('/therapist/search', {
     params:{
-      lat: userLat,
-      long: userLong
+      lat: 29.951065,
+      long: -90.071533
     }
   })
   .then((response)=>{
