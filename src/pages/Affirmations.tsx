@@ -70,7 +70,7 @@ const Affirmations = () => {
         <h1>Affirmations</h1>
         <h2>What affirmations are you looking for today? </h2>
         <h3>Today, I am feeling...</h3>
-        <h6 style={{color: 'gray'}}>You can express as much you want or enter a single word. It's up to you ☺ </h6>
+        <h6 >You can express as much you want or enter a single word. It's up to you ☺ </h6>
         <FormGroup style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <TextField
             id='outlined-multiline-static'
