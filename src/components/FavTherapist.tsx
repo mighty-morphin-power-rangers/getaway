@@ -83,13 +83,19 @@ useEffect(()=>{
 console.log(result)
 if(result){
     return (
-      <Card sx={{ maxWidth: 500 }}>
+      <Card sx={{ maxWidth: 500, backgroundColor:"#D1A1C0" }}>
         <CardHeader
           title={result.name}
           subheader={
             <Box display="flex" flexDirection="column">
               <Typography variant="body2">{result.formatted_phone_number}</Typography>
               <Typography variant="body2">{result.formatted_address}</Typography>
+              <CardMedia
+          component="img"
+          height="194"
+          image= "https://i.imgur.com/bMZzqTo.jpg"
+          alt="relax"
+        />
               {result.current_opening_hours?
               <Typography sx={{color:result.current_opening_hours.open_now ? "green": "red" }}variant="body2">{result.current_opening_hours.open_now ? "Open" : "Closed"}</Typography>
               : "Hours of Operation, Not Listed"

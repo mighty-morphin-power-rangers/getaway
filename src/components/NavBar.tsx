@@ -15,7 +15,7 @@ import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { useState } from "react";
 import React from "react";
 import { Link } from "react-router-dom";
-
+import MenuIcon from '@mui/icons-material/Menu';
 const data = [
 
   { name: "DashBoard", icon: <DashboardIcon /> ,link: "/"} ,
@@ -54,7 +54,9 @@ function NavBar() {
 
   return (
     <div>
-      <Button onClick={() => setOpen(true)}>Click me</Button>
+      <Button onClick={() => setOpen(true)}>
+        <MenuIcon/>
+      </Button>
       <Drawer open={open} anchor={'left'} onClose={() => setOpen(false)}>
         {getList()}
       </Drawer>

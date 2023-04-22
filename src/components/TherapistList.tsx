@@ -37,9 +37,27 @@ const TherapistList = (props: { therapists: Therapist[] }) => {
 
   return (
     <div style={{ height: '400px', overflow: 'auto' }}>
+       <style>
+    {`
+    ::-webkit-scrollbar {
+      width: 10px;
+      margin-right: 10px; /* Add margin to the right */
+      margin-left: 10px; /* Add margin to the right */
+      padding:30px;
+    }
+    ::-webkit-scrollbar-track {
+      background-color: #9BB6FD;
+      border-radies:30px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: #7C92CB;
+      border-radius:30px;
+    }
+    `}
+  </style>
   <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {therapists.map((therapist:Therapist) => (
-          <Grid item key={therapist.place_id} xs={12} sm={6} md={4} lg={3} >
+         <Grid item key={therapist.place_id} xs={4} sm={4} md={4} lg={4} style={{ width:"250px", height: "350px", overflow: "hidden" }}>
           <Therapist key={therapist.place_id} therapist ={therapist} handleOpen={handleOpen} />
           </Grid>
         ))}
@@ -52,7 +70,7 @@ const TherapistList = (props: { therapists: Therapist[] }) => {
       open={open}
       onClick={() => setOpen(false)}
     >
-      <TheraPopUp popup={popup}/>
+      <TheraPopUp popup={popup} />
     </Backdrop>
 
 

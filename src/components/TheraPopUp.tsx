@@ -135,7 +135,7 @@ useEffect(()=>{
     };
 
     return (
-      <Card sx={{ maxWidth: 500 }} onClick={handleClick}>
+      <Card sx={{ maxWidth: 500, backgroundColor:"#D1A1C0" , boxShadow: "10px 10px 10px rgba(30,30,30,0.5)", opacity:'95%', backdropFilter: "blur(10px)", backgroundImage: "linear-gradient(to bottom right, rgba(255,255,255,0.2), rgba(255,255,255,0))" }}onClick={handleClick}>
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: result.icon_background_color }} aria-label="recipe">
@@ -162,8 +162,8 @@ useEffect(()=>{
         <CardMedia
           component="img"
           height="194"
-          image={result.photos ? result.photos[0].html_attributions : "/static/images/cards/paella.jpg"}
-          alt="Paella dish"
+          image= "https://i.imgur.com/bMZzqTo.jpg"
+          alt="relax"
         />
         <CardContent>
           <Typography sx={{ textAlign: 'center' }} variant="body2" color="text.secondary">
@@ -172,7 +172,7 @@ useEffect(()=>{
         </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites" onClick={saveTherapist}>
-            <FavoriteIcon />
+            <FavoriteIcon sx={{color:"#6BB76A"}}/>
           </IconButton>
           <Typography variant="body2" color="text.secondary">
         {result.rating}

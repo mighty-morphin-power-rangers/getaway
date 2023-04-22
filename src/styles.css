@@ -1,9 +1,18 @@
+/* body{
+  background-color:rgb(120, 138, 202) ;
+} */
+
+body{
+  font-family: 'Carme', sans-serif;
+}
+
+
 /*MUSIC-BAR-CSS*/
 .music-bar {
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  background: lightblue
+  background: #0162BC,
 }
 /*MUSIC-BAR-CSS*/

@@ -1,9 +1,9 @@
 import { useState, useEffect, useContext } from 'react';
 import { UserContext, UserContextType } from '../App';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { FormGroup } from '@mui/material';
+import FormGroup from '@mui/material/FormGroup';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
@@ -70,7 +70,7 @@ const Affirmations = () => {
         <h1>Affirmations</h1>
         <h2>What affirmations are you looking for today? </h2>
         <h3>Today, I am feeling...</h3>
-        <h6 style={{color: 'gray'}}>You can express as much you want or enter a single word. It's up to you ☺ </h6>
+        <h6 >You can express as much you want or enter a single word. It's up to you ☺ </h6>
         <FormGroup style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
           <TextField
             id='outlined-multiline-static'
