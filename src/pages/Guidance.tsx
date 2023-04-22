@@ -37,11 +37,12 @@ const getAllTherapists = ()=>{
   
   axios.get('/therapist/search', {
     params:{
-      lat: userLat,
-      long: userLong
+      lat: 29.951065,
+      long: -90.071533
     }
   })
   .then((response)=>{
+    console.log(response.data.results)
     setTherapists(response.data.results)
     setpagetoken(response.data.next_page_token)
   })
@@ -90,7 +91,7 @@ console.log(userLat, userLong)
   />
     <div style={{marginTop:'60px', marginBottom:'60px'}}>
     <p style={{textAlign: 'left', fontSize:'18px', letterSpacing:"0.5em"}}>THERAPISTS NEAR YOU</p>
-    <TherapistMap therapists={therapists} userLat={userLat} userLong={userLong}></TherapistMap>
+    <TherapistMap therapists={therapists} userLat={29.951065} userLong={-90.071533}></TherapistMap>
     </div>
 
     <p style={{textAlign: 'left', fontSize:'18px', letterSpacing:"0.5em"}}>REACH OUT TO SCHEDULE AN APPOINTMENT TODAY</p>

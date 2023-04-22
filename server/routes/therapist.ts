@@ -9,6 +9,7 @@ const prisma = new PrismaClient();
 //this function gets the first 20 therapists near you
 
 router.get('/search',(req:any,res:any)=>{
+  console.log(req.query.lat)
   axios.get('https://maps.googleapis.com/maps/api/place/nearbysearch/json', {
   params: {
     key: GOOGLE_PLACES_API,
@@ -20,6 +21,7 @@ router.get('/search',(req:any,res:any)=>{
   }
 })
 .then((response:any)=>{
+  console.log(response.data)
 res.send(response.data).status(200)
 })
 .catch((err:any)=>{
