@@ -24,7 +24,7 @@ if (!isLoaded) return <div>Loading...</div>;
 return (
   <GoogleMap
     mapContainerClassName="map-container"
-    mapContainerStyle={{ width: "600px", height: "400px" }}
+    mapContainerStyle={{ width: "600px", height: "400px", borderRadius:"40px"}}
     zoom={12}
     center={{ lat: userLat, lng: userLong }}
   >

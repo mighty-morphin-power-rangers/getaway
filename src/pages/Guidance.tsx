@@ -68,13 +68,41 @@ const getNextTwenty = () =>{
 console.log('hi',therapists)
 
   return (
-    <div style={{margin: '40px', display:"center"}}>
-    <h1>Guidance</h1>
-    <h3>Favorite Therapist</h3>
-    <FavTherapist/>
-    <Pagination onClick={getNextTwenty} count={3} variant="outlined" shape="rounded" />
-    <TherapistList therapists={therapists}/>
+
+    <div style={{margin: '40px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
+    <h3>ITS OKAY TO ASK FOR HELP</h3>
+    <p style={{width:'50%'}}>
+    If you’re thinking about suicide, are worried about a friend or loved one, or would like emotional support, the Lifeline network is available 24/7 across the United States.
+    </p>
+    <h3>DIAL 988</h3>
+    <div
+    style={{
+      borderRadius:'40px',
+      margin:'60px auto',
+      color: '#5C6B9E',
+      backgroundColor:'#5C6B9E',
+      width: '70%',
+      height: '7px',
+      textAlign:'center',
+      marginBottom: '60px'
+    }}
+  />
+    <div style={{marginTop:'60px', marginBottom:'60px'}}>
+    <p style={{textAlign: 'left', fontSize:'18px', letterSpacing:"0.5em"}}>THERAPISTS NEAR YOU</p>
     <TherapistMap therapists={therapists} userLat={userLat} userLong={userLong}></TherapistMap>
+    </div>
+
+    <p style={{textAlign: 'left', fontSize:'18px', letterSpacing:"0.5em"}}>REACH OUT TO SCHEDULE AN APPOINTMENT TODAY</p>
+    <div style={{width:'75%', backgroundColor:'#CCD7FF', padding:'20px', textAlign:'center', display: 'flex', flexDirection:'column', justifyContent:"center", alignItems: "center", borderRadius:'40px'}}>
+    <Pagination onClick={getNextTwenty} count={3} variant="outlined" shape="rounded" style={{marginBottom:'30px', color:'#788ACA'}}/>
+    <TherapistList therapists={therapists}/>
+
+    </div>
+    <div style={{marginTop:"150px", marginBottom:"250px"}}>
+    <p style={{textAlign: 'left', fontSize:'18px', letterSpacing:"0.5em"}}>YOUR FAVORITES</p>
+    <FavTherapist />
+    </div>
+
     </div>
   )
   }
