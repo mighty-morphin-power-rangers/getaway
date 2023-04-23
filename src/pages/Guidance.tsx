@@ -9,21 +9,27 @@ import FavTherapist from "../components/FavTherapist"
 
 const Guidance = () =>{
 
-  const [userLat, setLat] = useState(0);
-  const [userLong, setLong] = useState(0);
+ const [userLat, setLat] = useState(29.951065);
+  const [userLong, setLong] = useState(-90.071533);
   const [pagetoken, setpagetoken] = useState(null);
   const [geolocationLoaded, setGeolocationLoaded] = useState(false);
   const [therapists, setTherapists] = useState([]);
 
-  useEffect(() => {
+    useEffect(() => {
     //function get the user lat and long
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords
-      setLat(latitude);
-      setLong(longitude);
+      setLat(29.951065);
+      setLong(-90.071533);
       setGeolocationLoaded(true);
     });
   }, [])
+    useEffect(() => {
+    //if lat and long has been loaded run get request
+    if (geolocationLoaded) {
+      getAllTherapists()
+    }
+  }, [geolocationLoaded, userLat, userLong])
 
   useEffect(() => {
     //if lat and long has been loaded run get request
@@ -34,13 +40,15 @@ const Guidance = () =>{
 
 
 const getAllTherapists = ()=>{
+  
   axios.get('/therapist/search', {
     params:{
-      lat: userLat,
-      long: userLong
+      lat: 29.951065,
+      long: -90.071533
     }
   })
   .then((response)=>{
+    console.log(response.data.results)
     setTherapists(response.data.results)
     setpagetoken(response.data.next_page_token)
   })
@@ -48,7 +56,6 @@ const getAllTherapists = ()=>{
     console.error(err, "could not get therpaists clientside")
   })
 }
-
 const getNextTwenty = () =>{
   axios.get('/therapist/next20', {
     params: {
