@@ -9,13 +9,13 @@ import FavTherapist from "../components/FavTherapist"
 
 const Guidance = () =>{
 
- const [userLat, setLat] = useState(29.951065);
+  const [userLat, setLat] = useState(29.951065);
   const [userLong, setLong] = useState(-90.071533);
   const [pagetoken, setpagetoken] = useState(null);
   const [geolocationLoaded, setGeolocationLoaded] = useState(false);
   const [therapists, setTherapists] = useState([]);
 
-    useEffect(() => {
+  useEffect(() => {
     //function get the user lat and long
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords
@@ -24,12 +24,6 @@ const Guidance = () =>{
       setGeolocationLoaded(true);
     });
   }, [])
-    useEffect(() => {
-    //if lat and long has been loaded run get request
-    if (geolocationLoaded) {
-      getAllTherapists()
-    }
-  }, [geolocationLoaded, userLat, userLong])
 
   useEffect(() => {
     //if lat and long has been loaded run get request
@@ -38,7 +32,10 @@ const Guidance = () =>{
     }
   }, [geolocationLoaded, userLat, userLong])
 
-
+ useEffect(()=>{
+getAllTherapists()
+ },[])
+ 
 const getAllTherapists = ()=>{
   
   axios.get('/therapist/search', {
@@ -56,6 +53,7 @@ const getAllTherapists = ()=>{
     console.error(err, "could not get therpaists clientside")
   })
 }
+
 const getNextTwenty = () =>{
   axios.get('/therapist/next20', {
     params: {
@@ -72,7 +70,7 @@ const getNextTwenty = () =>{
   })
 }
 
-console.log('hi',therapists)
+console.log(userLat, userLong)
 
   return (
 
@@ -96,7 +94,7 @@ console.log('hi',therapists)
   />
     <div style={{marginTop:'60px', marginBottom:'60px'}}>
     <p style={{textAlign: 'left', fontSize:'18px', letterSpacing:"0.5em"}}>THERAPISTS NEAR YOU</p>
-    <TherapistMap therapists={therapists} userLat={userLat} userLong={userLong}></TherapistMap>
+    <TherapistMap therapists={therapists} userLat={29.951065} userLong={-90.071533}></TherapistMap>
     </div>
 
     <p style={{textAlign: 'left', fontSize:'18px', letterSpacing:"0.5em"}}>REACH OUT TO SCHEDULE AN APPOINTMENT TODAY</p>
