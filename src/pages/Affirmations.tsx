@@ -64,7 +64,7 @@ const Affirmations = () => {
 
 
   return (
-    <div id='parent'>
+    <div id='parent' style={{ paddingBottom: '500px' }}>
       <Link to="/affirmation-entries"><Button variant='text'>View Affirmations</Button></Link>
       <center>
         <h1>Affirmations</h1>
@@ -86,6 +86,7 @@ const Affirmations = () => {
           </Button>
         </FormGroup>
       </center>
+<FormGroup>
       <div id='affirmations'>
       <center>
         {isSaveVisible && (<TextField id="standard-basic" placeholder='Enter title' error={error} helperText={helperText}  variant="standard" onChange={(e) => {setAffirmationTitle(e.target.value); handleTitleChange(e.target.value)}} />)}
@@ -95,8 +96,9 @@ const Affirmations = () => {
             })}
           </ul>
         </center>
-      </div>
    <center>{isSaveVisible && (<Button variant='text' onClick={ () => handleSaveSubmit() }>Save</Button>)}</center>
+   </div>
+   </FormGroup>
     </div>
   );
 };

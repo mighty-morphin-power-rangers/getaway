@@ -28,7 +28,7 @@ const AffirmationEntries = () => {
 
 
     return (
-        <div>
+      <div id='parent' style={{ paddingBottom: '500px' }}>
           <Link to="/affirmation-favorites"><Button variant='text'>View Favorites</Button></Link>
              {retrievedAffirmations.map((entry: any) => (
              <AffirmationEntry key={entry.user_id} user={entry.user_id} entryId={entry.id} title={entry.title} favorite={entry.favorite} affirmations={entry.affirmationList.split('/n')}  />))}
