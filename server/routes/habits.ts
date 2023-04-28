@@ -2,28 +2,17 @@ import { Router } from 'express';
 const habitsRoutes = Router();
 const { PrismaClient } = require('@prisma/client')
 const prisma = new PrismaClient()
-// const { PrismaClient } = require('@prisma/client')
-// const prisma = new PrismaClient()
-// import { prisma } from '../passport';
+
 // the route for this is  localhost:8080/habits/
 
 
-// habitsRoutes.get('/', async (req: any, res: any) => {
-//   try {
-//     const user = await prisma.user.findFirst({ where: { googleId: '117568678137566768509' } });
-//     console.log(user);
-//     res.send('Success');
-//   } catch (error) {
-//     console.log('Error: ', error);
-//     res.send('Error');
-//   }
-// });
+
 
 //  this route will be for getting the users habits
 habitsRoutes.post('/list', async (req: any, res: any) => {
   try {
     const { googleId } = req.body.data;
-    console.log(googleId)
+    // console.log(googleId)
     const habits = await prisma.habits.findMany({ where: { user_id: googleId } });
     res.send(habits);
   } catch (error) {
@@ -55,7 +44,7 @@ habitsRoutes.post('/newHabit', async (req: any, res: any) => {
 // this will before updating habit completion
 habitsRoutes.post('/completed', async (req: any, res: any) => {
   try {
-    console.log(req.body.data)
+    // console.log(req.body.data)
   const { habit, user, date, completed } = req.body.data;
    const habitLog = await prisma.habitLog.create({
   data: {
@@ -88,7 +77,7 @@ habitsRoutes.get('/updatedon/:id', async (req: any, res: any) => {
 
  // this is a goofy work around to the : being in the params
  // im sure there is a better way
- console.log(req.params)
+//  console.log(req.params)
   const habits = await prisma.habitLog.findMany({
     where: {
       habit_id: Number(id.slice(1))

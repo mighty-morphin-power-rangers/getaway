@@ -8,6 +8,7 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 
+
 interface TrackingProps {
   id: number;
    habit_createdAt: string;
@@ -20,7 +21,7 @@ interface TrackingProps {
 const Tracking = ({id, habit_createdAt}:TrackingProps) =>{
 
   const [dates, setDates] = useState<[]>([]);
-  console.log(habit_createdAt)
+  // console.log(habit_createdAt)
    useEffect(() => {
       {
     axios.get(`habits/updatedon/:${id}`)
@@ -33,17 +34,27 @@ setDates(response.data)
 }, []);
 
   return (
-    <Card>
+    <Card sx={{ borderRadius: '10px', 
+    backgroundColor: 'rgba(255, 0, 0, 0.5)', 
+    padding: '20px', 
+    width: '220px' }}
+     onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(200,0, 0, .5)'}
+  onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 0, 0, 0.5)'}
+    >
       {dates && dates.length > 0 && (
         <>
           <Typography variant='h5' component='h2' color='primary' gutterBottom>
-            Tracking is open
+          
+            <div>
+            You have completed this goal {dates.length} times.
+             </div>
           </Typography>
+         
           {/* {dates.map(date => (
         <Typography key={date.id} variant="body1" component="p" color="textPrimary">
-          {date.updatedAt}
-        </Typography>
-      ))} */}
+          {date.updatedAt} */}
+        {/* </Typography> */}
+      {/* ))} */}
         </>
       )}
     </Card>

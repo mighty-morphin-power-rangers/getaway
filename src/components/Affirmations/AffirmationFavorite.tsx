@@ -33,7 +33,7 @@ const AffirmationFavorite: React.FC<AffirmationFavoriteProps> = ({title, favorit
           <FavoriteIcon style={{ color: 'red' }} />
         </CardActions>
       </React.Fragment>)
-return (
+return (<div>
     <div
     id='affirmations'
     style={{ display: 'flex', justifyContent: 'center' }}
@@ -50,6 +50,8 @@ return (
         }}
       > {card}</Card></Box>
     </div>
+    <br></br>
+</div>
 )
 }
 

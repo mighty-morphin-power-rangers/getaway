@@ -1,0 +1,5 @@
+const wellbeingActivities = ['Meditation', 'Deep breathing exercises', 'Journaling', 'Mindfulness practices', 'Gratitude exercises', 'Yoga', 'Massage therapy', 'Acupuncture', 'Aromatherapy'];
+const studyHabits = ['Creating a study schedule', 'Active reading', 'Note-taking', 'Participating in class discussions', 'Working on practice problems', 'Collaborating with classmates', 'Staying organized', 'Taking breaks', 'Studying in a quiet environment'];
+const hobbies = ['Painting', 'Gardening', 'Cooking', 'Photography', 'Playing a musical instrument', 'Reading', 'Writing', 'Collecting', 'Drawing'];
+const outdoorActivities = ['Hiking', 'Biking', 'Swimming', 'Kayaking', 'Rock Climbing', 'Surfing', 'Yoga in the park', 'Beach Volleyball', 'Nature Walks'];
+ export default {wellbeingActivities,studyHabits,hobbies,outdoorActivities}

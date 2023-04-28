@@ -16,3 +16,14 @@ body{
   background: #0162BC,
 }
 /*MUSIC-BAR-CSS*/
+
+
+.fade-in {
+  opacity: 0.75;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+}
