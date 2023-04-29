@@ -9,7 +9,7 @@ datasource db {
 
 model User {
   id           Int            @id @default(autoincrement()) // Uuid's are just auto and are more secure, made this
-  googleId     String @unique
+  googleId     String         @unique
   name         String
   phone        Int?
   therapistId  Int?
@@ -20,6 +20,8 @@ model User {
   therapists   Therapists[]   @relation("UserTherapists")
   Habits       Habits[]
   HabitLog     HabitLog[]
+  Paintings    Paintings[]
+  Recommend    Recommend[]
 }
 
 model Mood {
@@ -31,11 +33,11 @@ model Mood {
 }
 
 model MoodsOfUsers {
-  id      Int  @id @default(autoincrement())
+  id      Int    @id @default(autoincrement())
   mood_id Int
   user_id String
-  mood    Mood @relation(fields: [mood_id], references: [id])
-  user    User @relation(fields: [user_id], references: [googleId])
+  mood    Mood   @relation(fields: [mood_id], references: [id])
+  user    User   @relation(fields: [user_id], references: [googleId])
 
   @@index([mood_id], map: "MoodsOfUsers_mood_id_fkey")
   @@index([user_id], map: "MoodsOfUsers_user_id_fkey")
@@ -64,24 +66,63 @@ model Therapists {
   rating                 Float?
   user                   User    @relation("UserTherapists", fields: [user_id], references: [id])
 }
+
 model Habits {
-  id              Int      @id @default(autoincrement())
+  id              Int        @id @default(autoincrement())
   habit_name      String
   habit_type      String
-  habit_createdAt DateTime @default(now())
+  habit_createdAt DateTime   @default(now())
   user_id         String
-  user            User     @relation(fields: [user_id], references: [googleId])
+  user            User       @relation(fields: [user_id], references: [googleId])
   HabitLog        HabitLog[]
 }
 
 // zach habit log
 model HabitLog {
-  id              Int      @id @default(autoincrement())
-  habit_id        Int
-  updatedAt       DateTime @updatedAt
-  user_id         String
-  user            User     @relation(fields: [user_id], references: [googleId])
-  habit           Habits   @relation(fields: [habit_id], references: [id])
-  
+  id        Int      @id @default(autoincrement())
+  habit_id  Int
+  updatedAt DateTime @updatedAt
+  user_id   String
+  user      User     @relation(fields: [user_id], references: [googleId])
+  habit     Habits   @relation(fields: [habit_id], references: [id])
+}
 
+model Recommend {
+  id                  Int      @id @default(autoincrement())
+  recommend_name      String
+  recommend_type      String
+  recommend_createdAt DateTime @default(now())
+  user_id             String
+  user                User     @relation(fields: [user_id], references: [googleId])
+}
+
+//brandons staff therapist hell maze
+model StaffTherapist {
+  id               Int                @id @default(autoincrement())
+  name             String
+  licenseType      String
+  photoURL         String
+  aboutMe          String             @db.VarChar(5000)
+  profExp          String             @db.VarChar(5000)
+  yearsExp         Int
+  licInfo          String
+  skills           String?
+  TherapistReviews TherapistReviews[]
+}
+
+model TherapistReviews {
+  id                 Int            @id @default(autoincrement())
+  date               String
+  text               String         @db.VarChar(5000)
+  rating             Float
+  staff_therapist_id Int
+  staff_therapist    StaffTherapist @relation(fields: [staff_therapist_id], references: [id])
+}
+
+model Paintings {
+  id      Int      @id @default(autoincrement())
+  url     Bytes
+  date    DateTime @default(now())
+  user_id String
+  user    User     @relation(fields: [user_id], references: [googleId])
 }

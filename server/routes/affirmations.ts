@@ -12,7 +12,7 @@ const config = new Configuration({
 
 const openai = new OpenAIApi(config);
 
-// OpenAPI handler
+// OpenAPI handler for main page
 affirmationRoutes.get('/mood/:moodString', (req, res) => {
     const { moodString } = req.params
 
@@ -32,6 +32,35 @@ affirmationRoutes.get('/mood/:moodString', (req, res) => {
 
     runPrompt();
 })
+
+//OpenAPI handler for interactive page
+affirmationRoutes.get('/:correctAffirmation', (req, res) => {
+    const { correctAffirmation } = req.params
+
+
+    console.log(correctAffirmation, 'correct')
+
+    const runPrompt = async () => {
+        const affirmationPrompt = `Send a gentle, encouraging one-sentence reward response after a user repeats this affirmation correctly: ${correctAffirmation}`
+
+        const response = await openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: affirmationPrompt,
+            max_tokens: 2048,
+            temperature: 1,
+        })
+
+
+        const openaiText = response.data.choices[0].text
+        const finalString = openaiText.replace(/\n/g, '');
+        res.send(finalString);
+    }
+
+    runPrompt();
+})
+
+
+
 
 // Adding affirmations to DB
 affirmationRoutes.post('/save/', async (req, res) => {
@@ -57,7 +86,7 @@ affirmationRoutes.post('/save/', async (req, res) => {
     }
 });
 
-//Retrieving affirmations to DB
+// Retrieving affirmations from DB
 affirmationRoutes.get('/retrieve/:googleId', async (req, res) => {
     const { googleId } = req.params
 
@@ -76,7 +105,29 @@ affirmationRoutes.get('/retrieve/:googleId', async (req, res) => {
 
 })
 
-//Retrieving favorited affirmations to DB
+// Retrieving specific affirmations from DB in use for interactive read-along
+affirmationRoutes.get('/retrieve/:userId/:entryId', async (req, res) => {
+    const { userId, entryId } = req.params
+
+    console.log(userId, entryId)
+    try {
+
+        const affirmationEntries = await prisma.affirmations.findFirst({
+            where: {
+                user_id: Number(userId),
+                id: Number(entryId)
+            }
+        })
+        res.send(affirmationEntries);
+
+    } catch (err) {
+        console.log(err);
+        res.send('Error: Affirmations were not found.')
+    }
+
+})
+
+//Retrieving favorited affirmations from DB
 affirmationRoutes.get('/retrieve-favorites/:googleId', async (req, res) => {
     const { googleId } = req.params;
 
@@ -138,5 +189,28 @@ affirmationRoutes.put('/favorite', async (req, res) => {
         }
 
 })
+
+// Updating title of affirmation
+affirmationRoutes.put('/updateTitle', async (req, res) => {
+    const { entryId, title, user_id} = req.body;
+
+    try {
+            const affirmationEntry = await prisma.affirmations.updateMany({
+                where: {
+                    id: entryId,
+                    user_id: user_id
+                },
+                data: {
+                    title: title
+                },
+            })
+            res.send('Success: Affirmation title changed')
+        }
+        catch {
+            res.send('Error: Affirmation title not changed')
+        }
+
+})
+
 
 export default affirmationRoutes

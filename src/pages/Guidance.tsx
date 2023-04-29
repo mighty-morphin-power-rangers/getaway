@@ -19,8 +19,8 @@ const Guidance = () =>{
     //function get the user lat and long
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords
-      setLat(29.951065);
-      setLong(-90.071533);
+      setLat(30.007274);
+      setLong(-90.08788);
       setGeolocationLoaded(true);
     });
   }, [])
@@ -69,8 +69,8 @@ const getNextTwenty = () =>{
     console.error('failed to get next twenty search results', err)
   })
 }
-
-console.log(userLat, userLong)
+console.log( userLat, userLong)
+console.log('hi',therapists)
 
   return (
 
