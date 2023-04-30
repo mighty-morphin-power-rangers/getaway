@@ -13,7 +13,7 @@ const AffirmationSpeech = () => {
     const {state} = useLocation();
     const {entryId, user} = state;
     const [isRecording, setIsRecording] = useState(false);
-    const [recognizedText, setRecognizedText] = useState('');
+    const [rewardText, setRewardText] = useState('');
     const [affirmations, setAffirmations] = useState<string[]>([]);
     const [currentAffirmationIndex, setCurrentAffirmationIndex] = useState(0);
     const [showText, setShowText] = useState(true);
@@ -61,11 +61,27 @@ const AffirmationSpeech = () => {
       };
 
 // openAI call for reward response
-    const rewardResponse = useCallback((affirmation: string) => {
-    axios
-      .get(`/affirmations/${affirmation}`)
-      .then(({ data }) => setRecognizedText(data))
-  }, [affirmations])
+const rewardResponse = useCallback(async (affirmation: string) => {
+  try {
+    const { data } = await axios.get(`/affirmations/${affirmation}`)
+    setRewardText(data)
+    setShowText(true);
+
+    const timer = setTimeout(() => { // user alert of reward text, then dissolves
+      setRewardText('')
+    }, 3000);
+     () => clearTimeout(timer);
+
+
+    // only allows you to only move onto next affirmation, if axios response is received
+    if (affirmation === affirmations[currentAffirmationIndex]) {
+      setCurrentAffirmationIndex((currentIndex) => currentIndex + 1);
+    }
+  } catch (error) {
+    console.error(error)
+  }
+}, [affirmations, currentAffirmationIndex])
+
       // interactive text-to-speech affirmation
     const SpeechRecognition =
     (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -75,10 +91,23 @@ const AffirmationSpeech = () => {
     console.log('Speech recognition started');
   };
 
-  recognition.onresult = (event: any) => {
-    const transcript = event.results[0][0].transcript;
-    // setRecognizedText(transcript);
-    checkAffirmation(transcript);
+
+
+  recognition.onresult = function(event: any) {
+    const result = event.results[event.resultIndex];
+    if (result.isFinal) {
+      checkAffirmation(event.results[0][0].transcript);
+    } else {
+      const splitWordArray = currentAffirmation.split(' ')
+      const transcript = result[0].transcript;
+      const transcriptWords = transcript.split(' ');
+      const highlightedText = splitWordArray.map((word, index) => {
+        const matched = transcriptWords[index] && word.toLowerCase() === transcriptWords[index].toLowerCase();
+        return matched ? `<span class="highlight">${word}</span>` : word;
+      }).join(' ');
+      setRewardText(highlightedText);
+      console.log(result[0].transcript + ' (interim)');
+    }
   };
 
   recognition.onend = () => {
@@ -88,39 +117,34 @@ const AffirmationSpeech = () => {
 
   recognition.onerror = (event: any) => {
     console.error('Speech recognition error:', event.error);
-    setRecognizedText(`Error: ${event.error}`);
+    setRewardText(`Error: ${event.error}`);
     setIsRecording(false);
   };
 
   const checkAffirmation = (transcript: string) => {
     transcript += '.'
 
-    setShowText(true);
-
-    const timer = setTimeout(() => { // user alert of recognized speech, then dissolves
-        setShowText(false);
-        setRecognizedText('')
-      }, 4000);
-       () => clearTimeout(timer);
-
     for (let i = 0; i < affirmations.length; i++) {
       const affirmation = affirmations[i].toLowerCase();
       if (transcript.toLowerCase().includes(affirmation)) {
-        setCurrentAffirmationIndex((currentIndex) => currentIndex + 1);
        rewardResponse(affirmations[i]);
-      }
+       setShowText(false);
+       }
     }
   };
 
   // text-to-speech record handlers
   const handleStartRecording = () => {
     setIsRecording(true);
+    recognition.interimResults = true;
     recognition.start();
   };
 
   const handleStopRecording = () => {
     setIsRecording(false);
+    recognition.interimResults = false;
     recognition.stop();
+
 
   };
 
@@ -131,27 +155,28 @@ const AffirmationSpeech = () => {
     return (
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundImage:`url(https://i.pinimg.com/originals/41/22/14/41221480bc8178738918624c23ef23f9.jpg)`, backgroundPosition: 'center'}}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                  <p>{recognizedText}</p>
                     <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <IconButton component="button" onClick={handleStartRecording} disabled={isRecording}>
-            <MicIcon/>
+            <MicIcon style={{ fontSize: 40 }}/>
             </IconButton>
             <IconButton component="button" onClick={handleStopRecording} disabled={!isRecording}>
-            <StopCircleIcon/>
+            <StopCircleIcon style={{ fontSize: 40 }}/>
             </IconButton>
             </div>
-            <div className={showText ? 'fade-in' : 'fade-out'}>
-       </div>
-       <div style={{ fontSize: 40 }}>
-       {(recognizedText !== '' ? '' : currentAffirmation)}
 
-       </div>
+       <div style={{ fontSize: 30 }}  className={showText ? 'fade-in' : 'fade-out'}>
+  {rewardText !== '' ? (
+    <div dangerouslySetInnerHTML={{ __html: rewardText }} />
+  ) : (
+    <div>{currentAffirmation}</div>
+  )}
+</div>
 
          {currentAffirmationIndex === affirmations.length && <p>Great job! You have successfully finished your affirmations</p> &&
-        <Button variant="text" onClick={() => setCurrentAffirmationIndex(0)}>Start Over</Button>}
+        <Button variant="text" size="large" onClick={() => setCurrentAffirmationIndex(0)}>Start Over</Button>}
 
 
-        {/*  <button onClick={toggleMenu}>Open Menu</button>
+       {/*  <button onClick={toggleMenu}>Open Menu</button>
       {isOpen && (
         <div className="popup-menu">
 
@@ -162,7 +187,7 @@ const AffirmationSpeech = () => {
           <input type="range" min="0" max="100" defaultValue="50" onChange={handleVolumeChange} />
         </div>
       )}
-      */}
+        */}
         </div>
         </div>
       );

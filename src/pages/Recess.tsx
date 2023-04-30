@@ -1,14 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 // import Recommend from '../components/Recess/Recommendations'
 import { UserContext, UserContextType } from '../App';
-import axios from 'axios';
-import { Button } from '@mui/material';
-import Popover from '@mui/material/Popover';
-import Card from '@mui/material/Card';
-import RecommendCreate from '../components/Recess/RecoCreate'
-import Menu from '../components/Recess/RecessMenu'
-import ResponseData from '../components/Recess/RecessInformation'
+
 import activities from '../components/Recess/fakedb'
+import ScrollWall from  '../components/Recess/ScrollWall'
 
 const Recess = () =>{
 const [newSearch, setnewSearch] = useState<[]>([]);
@@ -21,8 +16,8 @@ setnewSearch(namesObj)
   }
 console.log(activities)
 
-  return (
-    <div style={{margin: '40px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
+return (
+ <div style={{margin: '40px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
     <h3>Recess</h3>
     <p style={{width:'50%'}}>
      "By exploring new activities and hobbies, you can take small steps towards better mental health and discover a whole world of possibilities you never knew existed."
@@ -39,13 +34,20 @@ console.log(activities)
       marginBottom: '60px'
     }}
   />
-    
-    <Menu handleCreate={handleCreate} activities={activities}/>
  
-      <ResponseData responseData={newSearch}/>
+    <div
+      style={{
+        width: '80%',
+        margin: '0 auto',
+        border: '1px solid #ddd',
+        padding: '20px',
+        borderRadius: '10px',
+      }}
+    >
+      <ScrollWall />
     </div>
-
-  )
+  </div>
+);
   }
 
   export default Recess;

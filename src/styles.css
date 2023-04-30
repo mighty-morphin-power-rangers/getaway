@@ -17,7 +17,56 @@ body{
 }
 /*MUSIC-BAR-CSS*/
 
+/*MEDITATION*/
+.meditation-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
 
+.exercise-box {
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+  padding: 10px;
+  margin: 10px;
+  border-radius: 40px;
+}
+
+.exercise-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(204, 215, 255);
+  padding: 40px;
+  width: 1000px;
+  height: 700px;
+  border-radius: 30px;
+  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
+}
+
+.exercise-button {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  border-radius: 40px
+}
+
+
+.exercise-popup-text {
+  font-size: 50px; /* Change the font size to 24 pixels */
+  font-weight: bold; /* Add bold font weight */
+  font-style: italic; /* Add italic font style */
+}
+
+/*MEDITATION*/
+
+.three-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 .fade-in {
   opacity: 0.75;
   transition: opacity 0.5s ease-in-out;
@@ -26,4 +75,8 @@ body{
 .fade-out {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;
+}
+
+.highlight {
+  text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #00e3ff, 0 0 70px #00e3ff, 0 0 80px #00e3ff, 0 0 100px #00e3ff, 0 0 150px #00e3ff;
 }

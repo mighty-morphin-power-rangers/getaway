@@ -314,16 +314,16 @@ const MusicBar = () =>{
 // *  AUDIO ICONS  *
 // *****************
 const customIcons = {
-  play: <PlayArrowOutlinedIcon style={{ color: '#B19CD9' }} />,
-  pause: <PauseOutlinedIcon style={{ color: '#B19CD9' }} />,
-  rewind: <FastRewindIcon style={{ color: '#B19CD9' }} />,
-  forward: <FastForwardIcon style={{ color: '#B19CD9' }} />,
-  previous: <SkipPreviousOutlinedIcon style={{ color: '#B19CD9' }} />,
-  next: <SkipNextOutlinedIcon style={{ color: '#B19CD9' }} />,
-  loop: <LoopIcon style={{ color: '#B19CD9' }} />,
-  loopOff: <ReplayOutlinedIcon style={{ color: '#B19CD9' }} />,
-  volume: <VolumeUpIcon style={{ color: '#B19CD9' }} />,
-  volumeMute: <VolumeOffIcon style={{ color: '#B19CD9' }} />,
+  play: <PlayArrowOutlinedIcon style={{ color: 'rgb(120, 138, 202)' }} />,
+  pause: <PauseOutlinedIcon style={{ color: 'rgb(120, 138, 202)' }} />,
+  rewind: <FastRewindIcon style={{ color: 'rgb(120, 138, 202)' }} />,
+  forward: <FastForwardIcon style={{ color: 'rgb(120, 138, 202)' }} />,
+  previous: <SkipPreviousOutlinedIcon style={{ color: 'rgb(120, 138, 202)' }} />,
+  next: <SkipNextOutlinedIcon style={{ color: 'rgb(120, 138, 202)' }} />,
+  loop: <LoopIcon style={{ color: 'rgb(120, 138, 202)' }} />,
+  loopOff: <ReplayOutlinedIcon style={{ color: 'rgb(120, 138, 202)' }} />,
+  volume: <VolumeUpIcon style={{ color: 'rgb(120, 138, 202)' }} />,
+  volumeMute: <VolumeOffIcon style={{ color: 'rgb(120, 138, 202)' }} />,
 };
 // *****************
 // *  AUDIO ICONS  *
@@ -378,7 +378,7 @@ const customIcons = {
             backgroundColor:'#FFFFFF',
             letterSpacing:"0.3em",
             boxShadow: '0 0 10px 5px rgba(255, 255, 255, 0.3)',
-            color: '#B19CD9'
+            color: 'rgb(120, 138, 202)'
           }}
             layout='horizontal'
             autoPlay={false}
