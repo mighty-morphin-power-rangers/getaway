@@ -2,8 +2,9 @@ import  IconButton  from "@mui/material/IconButton";
 import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined';
 import axios from "axios"
 import React, {useRef, useEffect, useState, useContext} from "react";
+import { Link } from "react-router-dom";
 import { UserContext, UserContextType } from '../App';
-
+import  Button from '@mui/material/Button';
 
 const SavedPaintings = () =>{
   const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };
@@ -57,12 +58,16 @@ painting.url = `data:image/png;base64,${base64String}`;
 <p>Saved Paintings</p>
 <div>
   {paintings && paintings.length > 0 ? (
-          <><img src={paintings ? paintings[0].url : ''} width="640" height="400" /><IconButton
+          <><><img src={paintings ? paintings[0].url : ''} width="640" height="400" /><IconButton
             onClick={deletePaintings}
             style={{ marginTop: '15px', cursor: 'pointer' }}
           >
             <DeleteOutlineOutlinedIcon />
           </IconButton></>
+          <Link to={{ pathname: '/painting' }} style={{ textDecoration: "none" }}>
+          <Button sx={{backgroundColor:"#788ACA"}}>Paint More</Button>
+          </Link>
+          </>
   ) : (<p>No Saved Images</p>
   )}
               </div>

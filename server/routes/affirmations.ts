@@ -38,7 +38,6 @@ affirmationRoutes.get('/:correctAffirmation', (req, res) => {
     const { correctAffirmation } = req.params
 
 
-    console.log(correctAffirmation, 'correct')
 
     const runPrompt = async () => {
         const affirmationPrompt = `Send a gentle, encouraging one-sentence reward response after a user repeats this affirmation correctly: ${correctAffirmation}`
