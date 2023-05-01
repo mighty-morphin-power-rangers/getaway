@@ -1,15 +1,16 @@
 import { Router, response } from 'express';
 const recommendRoutes = Router();
-const { PrismaClient } = require('@prisma/client')
-const prisma = new PrismaClient()
+const { PrismaClient } = require('@prisma/client');
+const prisma = new PrismaClient();
 import axios from 'axios';
-const GOOGLE_PLACES_API = process.env.GOOGLE_PLACES_API
-const UNSPLASH_API_KEY = process.env.UNSPLASH_API_KEY
-
+const GOOGLE_PLACES_API = process.env.GOOGLE_PLACES_API;
+const UNSPLASH_API_KEY = process.env.UNSPLASH_API_KEY;
 
 recommendRoutes.get('/', async (req: any, res: any) => {
   try {
-    const user = await prisma.user.findFirst({ where: { googleId: '117568678137566768509' } });
+    const user = await prisma.user.findFirst({
+      where: { googleId: '117568678137566768509' },
+    });
     // console.log(user);
     res.send('Success');
   } catch (error) {
@@ -18,37 +19,30 @@ recommendRoutes.get('/', async (req: any, res: any) => {
   }
 });
 
-
 // route for scroll wall
 recommendRoutes.post('/scroll', async (req: any, res: any) => {
   const searchTopics = [
     'Nature',
-    'Desert',
-    'Mountains',
-    'Forests',
-    'Beaches',
-    'Waterfalls',
     'Cat',
-    'Meditation',
     'Dog',
-    'Self Care',
-    'Aesthetics',
-    'Mediterranean',
+    'Insects',
+    'Rain',
+    'Ferns',
     'Flowers',
-    'Textures',
-    
   ];
 
- 
   const fetchImages = async (topic: string) => {
     try {
-      const response = await axios.get("https://api.unsplash.com/photos/random?", {
-        params: {
-          client_id: UNSPLASH_API_KEY,
-          count: 10,
-          query: topic
-        },
-      });
+      const response = await axios.get(
+        'https://api.unsplash.com/photos/random?',
+        {
+          params: {
+            client_id: UNSPLASH_API_KEY,
+            count: 10,
+            query: topic,
+          },
+        }
+      );
       return response.data;
     } catch (error) {
       console.log('Error fetching images: ', error);
@@ -56,14 +50,14 @@ recommendRoutes.post('/scroll', async (req: any, res: any) => {
     }
   };
 
-
   const topic1 = getRandomSearchTopic(searchTopics);
-  const topic2 = getRandomSearchTopic(searchTopics.filter(t => t !== topic1));
+  const topic2 = getRandomSearchTopic(searchTopics.filter((t) => t !== topic1));
 
-  
-  const [images1, images2] = await Promise.all([fetchImages(topic1), fetchImages(topic2)]);
+  const [images1, images2] = await Promise.all([
+    fetchImages(topic1),
+    fetchImages(topic2),
+  ]);
 
- 
   const shuffled = shuffle([...images1, ...images2]);
 
   res.send(shuffled);
@@ -83,13 +77,14 @@ function shuffle(array: any[]) {
   return shuffledArray;
 }
 
-
 //  this route will be for getting the users recommend
 recommendRoutes.post('/list', async (req: any, res: any) => {
   try {
     const { googleId } = req.body.data;
     // console.log(googleId)
-    const recommend = await prisma.recommend.findMany({ where: { user_id: googleId } });
+    const recommend = await prisma.recommend.findMany({
+      where: { user_id: googleId },
+    });
     res.send(recommend);
   } catch (error) {
     console.log('Error: ', error);
@@ -101,15 +96,15 @@ recommendRoutes.post('/list', async (req: any, res: any) => {
 recommendRoutes.post('/newRecommend', async (req: any, res: any) => {
   try {
     const { data } = req.body;
-  const { recommend_name, googleId, recommend_type } = data;
-// console.log(data)
-  const newObj = {
-    recommend_name: recommend_name,
-    recommend_type: recommend_type,
-    user_id: googleId
-  };
+    const { recommend_name, googleId, recommend_type } = data;
+    // console.log(data)
+    const newObj = {
+      recommend_name: recommend_name,
+      recommend_type: recommend_type,
+      user_id: googleId,
+    };
 
-    await prisma.recommend.create( {data: newObj} )
+    await prisma.recommend.create({ data: newObj });
 
     res.send('Success');
   } catch (error) {
@@ -121,24 +116,22 @@ recommendRoutes.post('/newRecommend', async (req: any, res: any) => {
 recommendRoutes.post('/completed', async (req: any, res: any) => {
   try {
     // console.log(req.body.data)
-  const { recommend, user, date, completed } = req.body.data;
-   const recommendLog = await prisma.recommendLog.create({
-  data: {
-    recommend: {
-      connect: {
-        id: recommend,
+    const { recommend, user, date, completed } = req.body.data;
+    const recommendLog = await prisma.recommendLog.create({
+      data: {
+        recommend: {
+          connect: {
+            id: recommend,
+          },
+        },
+        user: {
+          connect: {
+            googleId: user,
+          },
+        },
       },
-    },
-    user: {
-      connect: {
-        googleId: user,
-      },
-    },
-    
-
-  },
-});
-    res.send("good job");
+    });
+    res.send('good job');
   } catch (error) {
     console.log('Error: ', error);
     res.send('Error');
@@ -147,18 +140,17 @@ recommendRoutes.post('/completed', async (req: any, res: any) => {
 
 // this will get all the dates a recommend was updated
 recommendRoutes.get('/updatedon/:id', async (req: any, res: any) => {
-
   try {
- const  {id}  = req.params;
+    const { id } = req.params;
 
- // this is a goofy work around to the : being in the params
- // im sure there is a better way
-//  console.log(req.params)
-  const recommend = await prisma.recommendLog.findMany({
-    where: {
-      recommend_id: Number(id.slice(1))
-    }
-  });
+    // this is a goofy work around to the : being in the params
+    // im sure there is a better way
+    //  console.log(req.params)
+    const recommend = await prisma.recommendLog.findMany({
+      where: {
+        recommend_id: Number(id.slice(1)),
+      },
+    });
     res.send(recommend);
   } catch (error) {
     console.log('Error: ', error);
@@ -173,14 +165,14 @@ recommendRoutes.delete('/delete', async (req: any, res: any) => {
 
     await prisma.recommendLog.deleteMany({
       where: {
-        recommend_id: recommendId
-      }
+        recommend_id: recommendId,
+      },
     });
 
     await prisma.recommend.delete({
       where: {
-        id: recommendId
-      }
+        id: recommendId,
+      },
     });
 
     res.send('Success');
@@ -190,7 +182,7 @@ recommendRoutes.delete('/delete', async (req: any, res: any) => {
   }
 });
 
-recommendRoutes.post('/search', async(req: any, res: any) => {
+recommendRoutes.post('/search', async (req: any, res: any) => {
   try {
     const keyword = req.body.data.keyword;
     // console.log(keyword);
@@ -204,8 +196,10 @@ recommendRoutes.post('/search', async(req: any, res: any) => {
         },
       })
       .then((response: any) => {
-        const filteredResults = response.data.results.filter((result: any) => result.hasOwnProperty("name"));
-  res.status(200).send(filteredResults);
+        const filteredResults = response.data.results.filter((result: any) =>
+          result.hasOwnProperty('name')
+        );
+        res.status(200).send(filteredResults);
       })
       .catch((err: any) => {
         res.status(500);
@@ -217,4 +211,4 @@ recommendRoutes.post('/search', async(req: any, res: any) => {
   }
 });
 
-export default recommendRoutes
+export default recommendRoutes;
