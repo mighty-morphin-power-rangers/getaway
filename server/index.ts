@@ -46,7 +46,7 @@ app.use(passportAuth.session());
 
 app.use(
   cors({
-    origin: process.env.CLIENT_URL,
+    origin: 'https://getawayapp.co',
     methods: 'GET,POST,PUT,DELETE',
     credentials: true,
   })
