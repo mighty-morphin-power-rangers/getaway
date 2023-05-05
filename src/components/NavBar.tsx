@@ -33,7 +33,7 @@ function NavBar() {
   const [open, setOpen] = useState(false);
 
   const logout = () => {
-    window.open(`https://getawayapp.co/auth/logout`, '_self');
+    window.open(`${process.env.REACT_APP_CLIENT_URL}auth/logout`, '_self');
   };
 
   const getList = () => (
