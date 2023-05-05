@@ -56,7 +56,7 @@ app.get(
   '/auth/google/callback',
   passportAuth.authenticate('google', { failureRedirect: '/' }),
   function (req: any, res: any) {
-    res.redirect('/');
+    res.redirect('https://getawayapp.co/');
   }
 );
 
