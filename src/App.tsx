@@ -41,7 +41,7 @@ const App = () => {
   useEffect(() => {
     const getUser = () => {
       axios
-        .get(`${process.env.REACT_APP_CLIENT_URL}auth/login/success`)
+        .get(`https://getawayapp.co/auth/login/success`)
         .then((response) => {
           if (response.status === 200) {
             return response.data;
