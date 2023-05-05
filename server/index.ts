@@ -54,7 +54,7 @@ app.use(
 
 app.get(
   '/auth/google/callback',
-  passportAuth.authenticate('google', { failureRedirect: '/' }),
+  passportAuth.authenticate('google', { failureRedirect: 'https://getawayapp.co/' }),
   function (req: any, res: any) {
     res.redirect('https://getawayapp.co/');
   }
