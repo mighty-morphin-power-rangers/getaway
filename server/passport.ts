@@ -67,7 +67,7 @@ passport.use(
     {
       clientID: process.env.GOOGLE_CLIENT_ID,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-      callbackURL: 'getawayapp.co/auth/google/callback',
+      callbackURL: '/auth/google/callback',
       scope: ['profile', 'email'],
     },
     function (accessToken: any, refreshToken: any, profile: any, cb: any) {
