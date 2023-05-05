@@ -13,7 +13,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 export default function SignInSide() {
   const google = ()=>{
 
-      window.open(`http://localhost:8080/auth/google/`, "_self")
+      window.open(`${process.env.REACT_APP_CLIENT_URL}auth/google/`, "_self")
 
     }
     useEffect(() => {
