@@ -5,7 +5,11 @@ const prisma = new PrismaClient()
 
 // the route for this is  localhost:8080/habits/
 
-
+habitsRoutes.get('/', async (req: any, res: any) => {
+  const allUsers: any = await prisma.user.findMany();
+  // console.log('GET SUCCESS');
+  res.status(200).json(allUsers);
+});
 
 
 //  this route will be for getting the users habits
