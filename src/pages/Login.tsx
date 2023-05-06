@@ -68,11 +68,7 @@ export default function SignInSide() {
     style={{ marginRight: '50px' }}
   />
     </div>
-    <footer style={footerStyles}>
-    Copyright &copy; 2023 Getaway
-    {/* | <a href="#">Terms of Service </a>
-    | <a href="#">Privacy Policy</a></p> */}
-</footer>
+
     </div>
   );
 };
