@@ -194,61 +194,6 @@ const MusicBar = () =>{
           },
       ],
       },
-    // {
-    //   title: 'Mad',
-    //   songs: [
-    //     {
-    //       src: 'https://drive.google.com/uc?export=download&id=1Lv5LudP7RxxbI9s-IO-7BBY0wJJPHj5H',
-    //       artist: 'Artist 1',
-    //       title: 'Playlist1 Song 1',
-    //     },
-    //     {
-    //       src: 'https://drive.google.com/uc?export=download&id=14-K4ANI1yIFelWlFxXFS9OBaN4ndIJJk',
-    //       artist: 'Artist 2',
-    //       title: 'Playlist1 Song 2',
-    //     },
-    //     {
-    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-    //       artist: 'Artist 3',
-    //       title: 'Playlist1 Song 3',
-    //     },
-    //     {
-    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-    //       artist: 'Artist 4',
-    //       title: 'Playlist1 Song 4',
-    //     },
-    //     {
-    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-    //       artist: 'Artist 5',
-    //       title: 'Playlist1 Song 5',
-    //     },
-    //     {
-    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-    //       artist: 'Artist 6',
-    //       title: 'Playlist1 Song 6',
-    //     },
-    //     {
-    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-    //       artist: 'Artist 7',
-    //       title: 'Playlist1 Song 7',
-    //     },
-    //     {
-    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-    //       artist: 'Artist 8',
-    //       title: 'Playlist1 Song 8',
-    //     },
-    //     {
-    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-    //       artist: 'Artist 9',
-    //       title: 'Playlist1 Song 9',
-    //     },
-    //     {
-    //       src: 'https://drive.google.com/uc?export=download&id=19D4PXYw8nwkoF0o0yqCCAwiDCm-sQXYN',
-    //       artist: 'Artist 10',
-    //       title: 'Playlist1 Song 10',
-    //     },
-    //   ],
-    // },
     {
       title: 'Focus',
       songs: [

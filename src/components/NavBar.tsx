@@ -36,29 +36,32 @@ function NavBar() {
     window.open(`${process.env.REACT_APP_CLIENT_URL}auth/logout`, '_self');
   };
 
-  const getList = () => (
-    <div style={{ width: 250 }} onClick={() => setOpen(false)}>
-      {data.map((item) => (
-        <Link
-          to={{ pathname: item.link }}
-          style={{ textDecoration: 'none' }}
-          key={item.name}
-        >
-          <ListItem button>
-            <ListItemIcon>{item.icon}</ListItemIcon>
-            <ListItemText primary={item.name} />
-          </ListItem>
-        </Link>
-      ))}
-    </div>
-  );
+ const getList = () => (
+  <div style={{ width: 250 }} onClick={() => setOpen(false)}>
+    {data.map((item) => (
+      <Link
+        to={{ pathname: item.link }}
+        style={{
+          textDecoration: "none",
+          color: item.link === window.location.pathname ? "#CCD7FF" : "white",
+        }}
+        key={item.name}
+      >
+        <ListItem button>
+          <ListItemIcon>{item.icon}</ListItemIcon>
+          <ListItemText primary={item.name} />
+        </ListItem>
+      </Link>
+    ))}
+  </div>
+);
 
   return (
-    <div>
+    <div style={{ position: "absolute", top: "0", left: "0" , zIndex:10}}>
       <Button onClick={() => setOpen(true)}>
         <MenuIcon />
       </Button>
-      <Drawer open={open} anchor={'left'} onClose={() => setOpen(false)}>
+      <Drawer open={open} anchor={'left'} onClose={() => setOpen(false)}  PaperProps={{ style: { backgroundColor: 'rgb(120, 138, 202)' } }} >
         {getList()}
       </Drawer>
       <Button onClick={logout}>Logout</Button>

@@ -94,7 +94,7 @@ export default class SceneInit {
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
     this.stats = new Stats();
-    document.body.appendChild(this.stats.dom);
+    // document.body.appendChild(this.stats.dom);
 
     // ambient light which is for the whole scene
     let ambientLight = new THREE.AmbientLight(0xffffff, 0.5);

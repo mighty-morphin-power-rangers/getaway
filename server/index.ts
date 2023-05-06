@@ -41,6 +41,11 @@ app.use(
 const clientPath = path.resolve(__dirname, '..', 'dist');
 app.use(express.static(clientPath));
 
+app.use(
+  '/piano-mp3s',
+  express.static(path.join(__dirname, '..', 'public', 'piano-mp3s'))
+);
+
 app.use(passportAuth.initialize());
 app.use(passportAuth.session());
 

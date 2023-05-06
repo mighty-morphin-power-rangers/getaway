@@ -210,8 +210,7 @@ const AffirmationEntry: React.FC<AffirmationEntryProps> = ({
                     {/* interactive affirmation button */}
                       <IconButton
                       component={Link}
-                       to='/affirmation-practice/'
-                       state={{entryId: entryId, user: user}}
+                      to={`/affirmation-practice/?entryId=${entryId}&user=${user}`}
                         style={{ marginTop: '15px', cursor: 'pointer' }}
                       >
                         <AutoAwesomeIcon />

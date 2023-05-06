@@ -11,8 +11,9 @@ export default class Piano {
   pianoGroup: THREE.Group;
   flatKeys: Key[];
   naturalKeys: Key[];
+  audioContext: AudioContext;
 
-  constructor() {
+  constructor(audioContext: AudioContext) {
     this.flatKeys = [
       new Key({ keyName: 'Db4', input: 'w', xOffset: 5 - 30 }),
       new Key({ keyName: 'Eb4', input: 'e', xOffset: 15 - 30 }),
@@ -35,6 +36,7 @@ export default class Piano {
     // this.socket = socket;
     this.addFlatKeys();
     this.addNaturalKeys();
+    this.audioContext = audioContext;
   }
 
   validKey(input: string): Key | undefined {
@@ -71,5 +73,9 @@ export default class Piano {
 
   getPianoGroup(): THREE.Group {
     return this.pianoGroup;
+  }
+
+  public getAudioContext(): AudioContext {
+    return this.audioContext;
   }
 }

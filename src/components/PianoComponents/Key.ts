@@ -1,6 +1,6 @@
 import * as THREE from 'three';
 import { Howl } from 'howler';
-
+// import '../../../public/piano-mp3s/'
 interface KeyProps {
   keyName: string;
   input: string;
@@ -28,7 +28,10 @@ export default class Key {
     // this.socket = socket;
 
     this.sound = new Howl({
-      src: [`../../../src/piano-mp3s/${keyName}.mp3`],
+      src: [`piano-mp3s/${keyName}.mp3`],
+      onload: () => console.log(`${keyName} loaded`),
+      onloaderror: (id, err) => console.log(`Load error on ${keyName}:`, err),
+      onplayerror: (id, err) => console.log(`Play error on ${keyName}:`, err),
     });
 
     if (keyName.length === 3) {

@@ -24,17 +24,7 @@ const drawHand = (predictions:object[], ctx:any) =>{
        // Set color
         ctx.fillStyle = "indigo"
         ctx.fill();
-        // oldX.push(x);
-        // oldY.push(y)
-        // ctx.lineWidth = 10;
-        // ctx.linecap = "round"
-        // if (oldX.length >= 2 && oldY.length >= 2) {
-        //   ctx.beginPath();
-        //   ctx.moveTo(oldX[oldX.length-2], oldY[oldY.length-2]);
-        //   ctx.lineTo(x, y);
-        //   ctx.stroke();
-        //   ctx.closePath();
-        // }
+
       }
 
 

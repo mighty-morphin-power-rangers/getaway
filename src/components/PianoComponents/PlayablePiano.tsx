@@ -14,15 +14,23 @@ const PlayablePiano = () => {
       sceneInit.initScene(canvasRef.current);
       sceneInit.animate();
 
-      const piano = new Piano();
+      const audioContext = new AudioContext();
+
+      const piano = new Piano(audioContext);
       pianoRef.current = piano;
 
       sceneInit.scene.add(piano.getPianoGroup());
+
+      // const context = new (window.AudioContext || window.webkitAudioContext)();
 
       const onKeyDown = (e: KeyboardEvent) => {
         if (e.repeat) {
           return;
         }
+        audioContext.resume().then(() => {
+          console.log('Playback resumed successfully');
+        });
+
         pianoRef.current?.pressKey(e.key);
       };
 
@@ -33,9 +41,20 @@ const PlayablePiano = () => {
       window.addEventListener('keydown', onKeyDown);
       window.addEventListener('keyup', onKeyUp);
 
+      document.addEventListener('click', function () {
+        audioContext.resume().then(() => {
+          console.log('Playback resumed successfully');
+        });
+      });
+
       return () => {
         window.removeEventListener('keydown', onKeyDown);
         window.removeEventListener('keyup', onKeyUp);
+        document.removeEventListener('click', function () {
+          audioContext.resume().then(() => {
+            console.log('Playback resumed successfully');
+          });
+        });
       };
     }
   }, []);

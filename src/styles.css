@@ -13,22 +13,22 @@ body{
   bottom: 0;
   left: 0;
   right: 0;
-  background: #0162BC,
 }
 /*MUSIC-BAR-CSS*/
 
 /*MEDITATION*/
-.meditation-container {
+
+
+.exercise-container {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 10px;
 }
 
 .exercise-box {
-  box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
   padding: 10px;
-  margin: 10px;
+  margin: 10px 0;
   border-radius: 40px;
 }
 
@@ -39,17 +39,16 @@ body{
   transform: translate(-50%, -50%);
   background-color: rgb(204, 215, 255);
   padding: 40px;
-  width: 1000px;
-  height: 700px;
+  width: 1200px;
+  height: 900px;
   border-radius: 30px;
   box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.3);
 }
 
 .exercise-button {
   position: absolute;
-  bottom: 10px;
+  top: 10px;
   right: 10px;
-  border-radius: 40px
 }
 
 
@@ -59,6 +58,9 @@ body{
   font-style: italic; /* Add italic font style */
 }
 
+.cards {
+  margin-left: -20px
+}
 /*MEDITATION*/
 
 .three-container {

@@ -10,8 +10,10 @@ import Button from '@mui/material/Button'
 
 
 const AffirmationSpeech = () => {
-    const {state} = useLocation();
-    const {entryId, user} = state;
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const entryId = queryParams.get('entryId');
+  const user = queryParams.get('user');
     const [isRecording, setIsRecording] = useState(false);
     const [rewardText, setRewardText] = useState('');
     const [affirmations, setAffirmations] = useState<string[]>([]);
@@ -22,6 +24,7 @@ const AffirmationSpeech = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [volume, setVolume] = useState(50);
 
+
     // retrieving affirmations
     useEffect(() => {
         axios
@@ -29,7 +32,7 @@ const AffirmationSpeech = () => {
         .then(({ data }) => setAffirmations(data.affirmationList.split('/n')))
         .catch((err) => console.error(err))
 
-    }, [])
+    }, [user, entryId])
 
     // affirmation binaural music
     useEffect(() => {

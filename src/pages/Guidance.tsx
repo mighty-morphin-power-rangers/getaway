@@ -14,8 +14,10 @@ const Guidance = () =>{
   const [pagetoken, setpagetoken] = useState(null);
   const [geolocationLoaded, setGeolocationLoaded] = useState(false);
   const [therapists, setTherapists] = useState([]);
+  const [ staff, setStaff ] :any = useState([]);
 
   useEffect(() => {
+    getAllStaff();
     //function get the user lat and long
     navigator.geolocation.getCurrentPosition(position => {
       const { latitude, longitude } = position.coords
@@ -32,10 +34,16 @@ const Guidance = () =>{
     }
   }, [geolocationLoaded, userLat, userLong])
 
- useEffect(()=>{
-getAllTherapists()
- },[])
- 
+const getAllStaff = ()=>{
+  axios.get('/staff/get')
+  .then((response)=>{
+    setStaff(response.data);
+  })
+  .catch((err)=>{
+    console.error("could not get all staff", err)
+  })
+}
+
 const getAllTherapists = ()=>{
   
   axios.get('/therapist/search', {
@@ -71,7 +79,7 @@ const getNextTwenty = () =>{
 }
 console.log( userLat, userLong)
 console.log('hi',therapists)
-
+console.log('staff', staff)
   return (
 
     <div style={{margin: '40px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
