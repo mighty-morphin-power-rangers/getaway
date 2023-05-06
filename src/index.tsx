@@ -8,20 +8,20 @@ const mainTheme = createTheme({
   spacing: 4,
   palette:{
     primary:{
-      main: '#FFFFFF'
+      main: '#000000'
     },
     secondary:{
       main: '#CCD7FF'
     },
     background: {
-      default: 'rgb(120, 138, 202)',
+      default: '#FFFFFF',
     },
     text: {
-      primary: '#FFFFFF'
+      primary: '#000000'
     }
   },
   typography:{
-    fontFamily: 'Carme',
+    fontFamily: 'Inter',
   }
 });
 

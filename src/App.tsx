@@ -1,5 +1,5 @@
 import React, { createContext } from 'react';
-import { BrowserRouter, Routes, Route, Link, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Link, Navigate, useLocation  } from 'react-router-dom';
 import Home from './pages/Home';
 import Habits from './pages/Habits';
 import Affirmations from './pages/Affirmations';
@@ -20,7 +20,9 @@ import Painting from './pages/Painting';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Switch } from '@mui/material';
-import PlayablePiano from './components/PianoComponents/PlayablePiano';
+// Theodore import stuff
+import Music from '../src/pages/Music';
+// import PlayablePiano from './components/PianoComponents/PlayablePiano';
 
 export interface UserContextType {
   userName: string | null;
@@ -68,14 +70,13 @@ const App = () => {
     <UserContext.Provider value={{ userName, userId }}>
       <BrowserRouter>
         <div>
-          <NavBar />
+        {user && <NavBar />}
           <Routes>
             {user ? (
               <Route path='/' element={<Home />} />
             ) : (
               <Route path='/' element={<Login />} />
             )}
-
             <Route path='/habits' element={<Habits />} />
             <Route path='/affirmations' element={<Affirmations />} />
             <Route
@@ -94,7 +95,7 @@ const App = () => {
             <Route path='/guidance' element={<Guidance />} />
             <Route path='/meditation' element={<Meditation />} />
             <Route path='/painting' element={<Painting />} />
-            <Route path='/music' element={<PlayablePiano />} />
+            <Route path='/music' element={<Music />} />
             <Route path='/therapist-profile' element={<TherapistProfile />} />
             <Route path='/profile' element={<Profile />} />
           </Routes>

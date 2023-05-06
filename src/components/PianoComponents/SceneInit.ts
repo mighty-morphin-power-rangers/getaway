@@ -51,15 +51,18 @@ export default class SceneInit {
     // this.scene.background = new THREE.Color('hotpink');
   }
 
-  initScene(canvas: HTMLCanvasElement): void {
+  initScene(canvas: HTMLCanvasElement, container: HTMLElement): void {
     this.camera = new THREE.PerspectiveCamera(
       this.fov,
-      window.innerWidth / window.innerHeight,
+      // window.innerWidth / window.innerHeight,
+      container.clientWidth / container.clientHeight,
       1,
       1000
     );
 
-    this.camera.position.z = 196;
+    // this.renderer.setSize(container.clientWidth, container.clientHeight);
+
+    this.camera.position.z = 80;
 
     this.clock = new THREE.Clock();
     this.scene = new THREE.Scene();
@@ -88,8 +91,10 @@ export default class SceneInit {
     };
     this.renderer = new WebGLRenderer(parameters);
 
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(this.renderer.domElement);
+    // this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(container.clientWidth, container.clientHeight);
+
+    // document.body.appendChild(this.renderer.domElement);
 
     this.controls = new OrbitControls(this.camera, this.renderer.domElement);
 
@@ -108,7 +113,12 @@ export default class SceneInit {
     this.scene.add(spotLight);
 
     // if window resizes
-    window.addEventListener('resize', () => this.onWindowResize(), false);
+    // window.addEventListener('resize', () => this.onWindowResize(), false);
+    window.addEventListener(
+      'resize',
+      () => this.onWindowResize(container),
+      false
+    );
   }
 
   animate(): void {
@@ -126,9 +136,12 @@ export default class SceneInit {
     this.renderer.render(this.scene, this.camera);
   }
 
-  onWindowResize(): void {
-    this.camera.aspect = window.innerWidth / window.innerHeight;
+  onWindowResize(container: HTMLElement): void {
+    // this.camera.aspect = window.innerWidth / window.innerHeight;
+    // this.camera.updateProjectionMatrix();
+    // this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.camera.aspect = container.clientWidth / container.clientHeight;
     this.camera.updateProjectionMatrix();
-    this.renderer.setSize(window.innerWidth, window.innerHeight);
+    this.renderer.setSize(container.clientWidth, container.clientHeight);
   }
 }

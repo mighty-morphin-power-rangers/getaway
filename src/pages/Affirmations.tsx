@@ -65,7 +65,7 @@ const Affirmations = () => {
 
   return (
     <div id='parent' style={{ paddingBottom: '500px' }}>
-      <Link to="/affirmation-entries"><Button variant='text'>View Affirmations</Button></Link>
+      <Link to="/affirmation-entries"><Button variant='text' style={{marginTop: '40px'}}>View Affirmations</Button></Link>
       <center>
         <h2>What affirmations are you looking for today? </h2>
         <h3>Today, I am feeling...</h3>

@@ -18,7 +18,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import BrushIcon from '@mui/icons-material/Brush';
 import PianoIcon from '@mui/icons-material/Piano';
 const data = [
-  { name: 'DashBoard', icon: <DashboardIcon />, link: '/' },
+  { name: 'Dashboard', icon: <DashboardIcon />, link: '/' },
   { name: 'Growth', icon: <SpaIcon />, link: '/habits' },
   { name: 'Guidance', icon: <BookIcon />, link: '/guidance' },
   { name: 'Meditation', icon: <SelfImprovementIcon />, link: '/meditation' },

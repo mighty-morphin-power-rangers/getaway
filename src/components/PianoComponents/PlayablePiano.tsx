@@ -7,11 +7,14 @@ import Piano from './Piano';
 const PlayablePiano = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const pianoRef = useRef<Piano | null>(null);
+  // add container
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (canvasRef.current) {
+    if (canvasRef.current && containerRef.current) {
       const sceneInit = new SceneInit();
-      sceneInit.initScene(canvasRef.current);
+      // sceneInit.initScene(canvasRef.current);
+      sceneInit.initScene(canvasRef.current, containerRef.current);
       sceneInit.animate();
 
       const audioContext = new AudioContext();
@@ -60,8 +63,8 @@ const PlayablePiano = () => {
   }, []);
 
   return (
-    <div>
-      <canvas ref={canvasRef}></canvas>
+    <div ref={containerRef} style={{ width: '50%', height: '100%' }}>
+      <canvas ref={canvasRef} style={{ borderRadius: '1000px' }}></canvas>
     </div>
   );
 };
