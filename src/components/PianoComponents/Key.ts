@@ -29,9 +29,9 @@ export default class Key {
 
     this.sound = new Howl({
       src: [`piano-mp3s/${keyName}.mp3`],
-      onload: () => console.log(`${keyName} loaded`),
-      onloaderror: (id, err) => console.log(`Load error on ${keyName}:`, err),
-      onplayerror: (id, err) => console.log(`Play error on ${keyName}:`, err),
+      // onload: () => console.log(`${keyName} loaded`),
+      // onloaderror: (id, err) => console.log(`Load error on ${keyName}:`, err),
+      // onplayerror: (id, err) => console.log(`Play error on ${keyName}:`, err),
     });
 
     if (keyName.length === 3) {
@@ -86,7 +86,7 @@ export default class Key {
       (this.mesh.material as THREE.MeshStandardMaterial).color.set('red');
     }
     this.rotateAroundWorldAxis(1);
-    // console.log(this.keyName);
+    console.log(this.keyName);
     this.sound.play();
     this.sound.fade(1, 0, 1000);
   }

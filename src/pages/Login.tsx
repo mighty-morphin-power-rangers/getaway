@@ -36,12 +36,13 @@ export default function SignInSide() {
       margin: '40px'
     };
 
-    const footerStyles = {
-    color: '#bfbfbf',
-    fontSize: '10px',
-    padding: '20px',
-     textAlign: 'center'
-    }
+    const footerStyles: React.CSSProperties = {
+      color: '#bfbfbf',
+      fontSize: '10px',
+      padding: '20px',
+      textAlign: 'center'
+    };
+    
   return (
     <div>
     <div style={containerStyles}>

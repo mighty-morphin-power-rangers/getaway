@@ -1,7 +1,5 @@
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
-import ExpandLessIcon from '@mui/icons-material/ExpandLess';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import PlayArrowOutlinedIcon from '@mui/icons-material/PlayArrowOutlined';
 import PauseOutlinedIcon from '@mui/icons-material/PauseOutlined';
 import SkipPreviousOutlinedIcon from '@mui/icons-material/SkipPreviousOutlined';
@@ -12,22 +10,16 @@ import LoopIcon from '@mui/icons-material/Loop';
 import ReplayOutlinedIcon from '@mui/icons-material/ReplayOutlined';
 import VolumeUpIcon from '@mui/icons-material/VolumeUp';
 import VolumeOffIcon from '@mui/icons-material/VolumeOff';
-
-
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
 import MusicOffOutlinedIcon from '@mui/icons-material/MusicOffOutlined';
-
-
 import React, { useState } from 'react';
 
+
+
 const MusicBar = () =>{
-
-
-
   // *****************
   // *   PLAYLIST    *
   // *****************
-
   const playlists = [
     {
       title: 'Ambient',
@@ -277,7 +269,7 @@ const customIcons = {
 
   const [currentPlaylistIndex, setCurrentPlaylistIndex] = useState(0);
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
-  const [isOpen, setIsOpen] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleNextTrack = () => {
     const currentPlaylist = playlists[currentPlaylistIndex];
@@ -322,7 +314,7 @@ const customIcons = {
             borderRadius:'30px',
             backgroundColor:'#FFFFFF',
             letterSpacing:"0.3em",
-            boxShadow: '0 0 10px 5px rgba(255, 255, 255, 0.3)',
+            boxShadow: '0 0 10px 5px rgba(120, 138, 202, 0.3)',
             color: 'rgb(120, 138, 202)'
           }}
             layout='horizontal'

@@ -30,7 +30,7 @@ const AffirmationFavorites = () => {
 
     return (
         <div>
-              <Link to="/affirmations"><Button variant='text'>Back to Affirmations</Button></Link>
+              <Link to="/affirmations"><Button variant='text' style={{marginTop: '40px'}}>Back to Affirmations</Button></Link>
               {favoriteAffirmations.map((entry: any) => (
              <AffirmationFavorite key={entry.user_id} user={entry.user_id} entryId={entry.id} title={entry.title} favorite={entry.favorite} affirmations={entry.affirmationList.split('/n')}  />))}
 

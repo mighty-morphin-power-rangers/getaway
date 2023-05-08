@@ -31,7 +31,7 @@ const PlayablePiano = () => {
           return;
         }
         audioContext.resume().then(() => {
-          console.log('Playback resumed successfully');
+          // console.log('Playback resumed successfully');
         });
 
         pianoRef.current?.pressKey(e.key);
@@ -46,7 +46,7 @@ const PlayablePiano = () => {
 
       document.addEventListener('click', function () {
         audioContext.resume().then(() => {
-          console.log('Playback resumed successfully');
+          // console.log('Playback resumed successfully');
         });
       });
 
@@ -55,7 +55,7 @@ const PlayablePiano = () => {
         window.removeEventListener('keyup', onKeyUp);
         document.removeEventListener('click', function () {
           audioContext.resume().then(() => {
-            console.log('Playback resumed successfully');
+            // console.log('Playback resumed successfully');
           });
         });
       };

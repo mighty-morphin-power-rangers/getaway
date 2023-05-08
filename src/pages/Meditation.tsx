@@ -23,13 +23,19 @@ const Meditation = () => {
 
   //handlers for opening and closing
   const handleExercise1Click = () => {
-    setExercise1Open(!exercise1Open);
+    setExercise1Open(true);
+    setExercise2Open(false);
+    setExercise3Open(false);
   };
   const handleExercise2Click = () => {
-    setExercise2Open(!exercise2Open);
+    setExercise1Open(false);
+    setExercise2Open(true);
+    setExercise3Open(false);
   };
   const handleExercise3Click = () => {
-    setExercise3Open(!exercise3Open);
+    setExercise1Open(false);
+    setExercise2Open(false);
+    setExercise3Open(true);
   };
 
   const handleExercise1Close = () => {
@@ -120,15 +126,15 @@ useEffect(() => {
 <p style={{textAlign: "center", margin: "auto"}} >Welcome to the Meditation Station! If you're feeling stressed, anxious, or overwhelmed, you can come and enjoy some nice visualizations and go through various breathing exercises.</p>
       <article className="exercise-container">
         <h2>Meditation Exercises</h2>
-      <Button className='exercise-box' variant="outlined" onClick={handleExercise1Click}>
-        5-5-5
-      </Button>
+        <Button className='exercise-box' variant="outlined" onClick={exercise1Open ? handleExercise1Close : handleExercise1Click}>
+         5-5-5
+       </Button>
       <br></br>
-      <Button className='exercise-box' variant="outlined" onClick={handleExercise2Click}>
+      <Button className='exercise-box' variant="outlined" onClick={exercise2Open ? handleExercise2Close : handleExercise2Click}>
         4-7-8
       </Button>
       <br></br>
-      <Button className='exercise-box' variant="outlined" onClick={handleExercise3Click}>
+      <Button className='exercise-box' variant="outlined" onClick={exercise3Open ? handleExercise3Close : handleExercise3Click}>
         Zen Breathing
       </Button>
       </article>

@@ -15,21 +15,36 @@ export default class Piano {
 
   constructor(audioContext: AudioContext) {
     this.flatKeys = [
-      new Key({ keyName: 'Db4', input: 'w', xOffset: 5 - 30 }),
-      new Key({ keyName: 'Eb4', input: 'e', xOffset: 15 - 30 }),
-      new Key({ keyName: 'Gb4', input: 't', xOffset: 35 - 30 }),
-      new Key({ keyName: 'Ab4', input: 'y', xOffset: 45 - 30 }),
-      new Key({ keyName: 'Bb4', input: 'u', xOffset: 55 - 30 }),
+      new Key({ keyName: 'Db3', input: '2', xOffset: 5 - 65 }),
+      new Key({ keyName: 'Eb3', input: '3', xOffset: 15 - 65 }),
+      new Key({ keyName: 'Gb3', input: '5', xOffset: 35 - 65 }),
+      new Key({ keyName: 'Ab3', input: '6', xOffset: 45 - 65 }),
+      new Key({ keyName: 'Bb3', input: '7', xOffset: 55 - 65 }),
+
+      new Key({ keyName: 'Db4', input: 's', xOffset: 75 - 65 }),
+      new Key({ keyName: 'Eb4', input: 'd', xOffset: 85 - 65 }),
+      new Key({ keyName: 'Gb4', input: 'g', xOffset: 105 - 65 }),
+      new Key({ keyName: 'Ab4', input: 'h', xOffset: 115 - 65 }),
+      new Key({ keyName: 'Bb4', input: 'j', xOffset: 125 - 65 }),
     ];
 
     this.naturalKeys = [
-      new Key({ keyName: 'C4', input: 'a', xOffset: 0 - 30 }),
-      new Key({ keyName: 'D4', input: 's', xOffset: 10 - 30 }),
-      new Key({ keyName: 'E4', input: 'd', xOffset: 20 - 30 }),
-      new Key({ keyName: 'F4', input: 'f', xOffset: 30 - 30 }),
-      new Key({ keyName: 'G4', input: 'g', xOffset: 40 - 30 }),
-      new Key({ keyName: 'A4', input: 'h', xOffset: 50 - 30 }),
-      new Key({ keyName: 'B4', input: 'j', xOffset: 60 - 30 }),
+      new Key({ keyName: 'B2', input: '1', xOffset: -10 - 65 }),
+      new Key({ keyName: 'C3', input: 'q', xOffset: 0 - 65 }),
+      new Key({ keyName: 'D3', input: 'w', xOffset: 10 - 65 }),
+      new Key({ keyName: 'E3', input: 'e', xOffset: 20 - 65 }),
+      new Key({ keyName: 'F3', input: 'r', xOffset: 30 - 65 }),
+      new Key({ keyName: 'G3', input: 't', xOffset: 40 - 65 }),
+      new Key({ keyName: 'A3', input: 'y', xOffset: 50 - 65 }),
+      new Key({ keyName: 'B3', input: 'u', xOffset: 60 - 65 }),
+      new Key({ keyName: 'C4', input: 'z', xOffset: 70 - 65 }),
+      new Key({ keyName: 'D4', input: 'x', xOffset: 80 - 65 }),
+      new Key({ keyName: 'E4', input: 'c', xOffset: 90 - 65 }),
+      new Key({ keyName: 'F4', input: 'v', xOffset: 100 - 65 }),
+      new Key({ keyName: 'G4', input: 'b', xOffset: 110 - 65 }),
+      new Key({ keyName: 'A4', input: 'n', xOffset: 120 - 65 }),
+      new Key({ keyName: 'B4', input: 'm', xOffset: 130 - 65 }),
+      new Key({ keyName: 'C5', input: ',', xOffset: 140 - 65 }),
     ];
     // got rid of socket inside of constructor
     this.pianoGroup = new THREE.Group();
