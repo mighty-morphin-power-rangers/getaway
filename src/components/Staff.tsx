@@ -12,10 +12,7 @@ import  IconButton  from "@mui/material/IconButton";
 import Favorite from '@mui/icons-material/Favorite';
 import Rating from '@mui/material/Rating';
 
-const Therapist = (props:
-  {therapist:
-    {name:string, vicinity:string, opening_hours:{open_now:boolean}, rating:number, place_id:string},
-    handleOpen:Function}) =>{
+const Staff = (props:any) =>{
 
 const { therapist, handleOpen } = props;
 
@@ -29,9 +26,9 @@ return (
       <CardMedia
         component="img"
         height="200"
-        image="https://i.imgur.com/hMhXRCM.png"
+        image={therapist.photoURL}
         alt="therapist icon"
-        style={{ width: "60%", display: "flex", alignItems: "center", justifyContent: "center", padding:"20px"}}
+        style={{ width: "100%", alignItems: "center", justifyContent: "center", padding:"20px", borderRadius:"20%"}}
       />
     <IconButton
   aria-label="therapists"
@@ -53,19 +50,22 @@ return (
           {therapist.name}
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {therapist.vicinity}
+          {therapist.licenseType}
         </Typography>
-        {therapist.opening_hours?  <Typography variant="body2" color="text.secondary">
-          {therapist.opening_hours.open_now ? "Open" : "Closed"}
-        </Typography> : "No Hours Available"}
+        <Typography gutterBottom variant="body1" component="div">
+          {therapist.skills}
+        </Typography>
+        <Typography gutterBottom variant="body1" component="div">
+          {therapist.yearsExp} Years of Experience
+        </Typography>
 
       </CardContent>
     </CardActionArea>
     <CardActions>
     <Typography variant="body2" color="text.secondary">
-        {therapist.rating}
+        5
       </Typography>
-      <Rating name="read-only" value={therapist.rating} readOnly />
+      <Rating name="read-only" value= {5} readOnly />
     </CardActions>
   </Card>
 );
@@ -74,4 +74,4 @@ return (
 };
 
 
-export default Therapist;
+export default Staff;

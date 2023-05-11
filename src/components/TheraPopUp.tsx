@@ -26,7 +26,7 @@ import { UserContext, UserContextType } from '../App' ;
 
 const TheraPopUp = (props:any) =>{
 const { popup } = props;
-
+console.log("pop", popup)
 const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };
 console.log('id test', userId)
 type Details = {
@@ -86,8 +86,11 @@ const getDetails = () =>{
   })
 }
 
+
+
 useEffect(()=>{
   getDetails();
+
 },[])
 
   const handleClick = (e: any) => {
@@ -102,7 +105,9 @@ useEffect(()=>{
         hours: result.current_opening_hours.weekday_text.join(' '),
         formatted_address: result.formatted_address,
         formatted_phone_number: result.formatted_phone_number,
-        rating: result.rating
+        rating: result.rating,
+        photoUrl : popup.photos?`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2500&photoreference=${popup.photos[0].photo_reference}&key=AIzaSyApJBHf29dIWEv09KiG2ETirPkj8mJRNjc`
+        : 'dude'
       }
     }).then(()=>{
       console.log("saved!")
@@ -162,7 +167,7 @@ useEffect(()=>{
         <CardMedia
           component="img"
           height="194"
-          image= "https://i.imgur.com/bMZzqTo.jpg"
+          image= {popup.photos?`https://maps.googleapis.com/maps/api/place/photo?maxwidth=2500&photoreference=${popup.photos[0].photo_reference}&key=AIzaSyApJBHf29dIWEv09KiG2ETirPkj8mJRNjc`: 'https://i.imgur.com/3I3F5sh.png'}
           alt="relax"
         />
         <CardContent>

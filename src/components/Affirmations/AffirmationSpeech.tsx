@@ -23,7 +23,7 @@ const AffirmationSpeech = () => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [volume, setVolume] = useState(50);
-
+     console.log(affirmations)
 
     // retrieving affirmations
     useEffect(() => {
@@ -171,7 +171,7 @@ const rewardResponse = useCallback(async (affirmation: string) => {
   {rewardText !== '' ? (
     <div dangerouslySetInnerHTML={{ __html: rewardText }} />
   ) : (
-    <div>{currentAffirmation}</div>
+    <div>{currentAffirmation ? currentAffirmation.replace(/,/g, " ") : ""}</div>
   )}
 </div>
 

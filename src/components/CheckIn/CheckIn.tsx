@@ -135,10 +135,12 @@ const CheckIn = () => {
     <div
       style={{
         textAlign: 'center',
-        letterSpacing: '0.5em'
+        letterSpacing: '0.5em',
+        background: "linear-gradient(45deg, #FF9F69 0%, #FF8974 80%, #FF8974 100%)"
       }}
     >
-      <h2>HOW DO YOU FEEL IN THIS MOMENT</h2>
+      <div style={{padding:"150px"}}>
+      <h2 style={{marginTop:"200px"}}>HOW DO YOU FEEL IN THIS MOMENT</h2>
       <ButtonGroup
         variant='contained'
         aria-label='outlined primary button group'
@@ -203,6 +205,8 @@ const CheckIn = () => {
       <h1>Check-in Statistics</h1>
       <p>Here we can see a summary of how your check-ins have been.</p>
       <MoodPieChart data={moodData} width={300} height={300} />
+      </div>
+
     </div>
   );
 };

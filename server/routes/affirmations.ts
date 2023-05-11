@@ -27,7 +27,10 @@ affirmationRoutes.get('/mood/:moodString', (req, res) => {
         })
         const affirmationsArray = response.data.choices[0].text.split(/\d+\. /).filter((str: string) => str !== '').map((str: string) => str.trim());
         affirmationsArray.shift()
-        res.send(affirmationsArray);
+        affirmationsArray.forEach(function(element: string, index: number) {
+            affirmationsArray[index] = element.replace(",", "");
+          })
+        res.send(affirmationsArray)
     }
 
     runPrompt();

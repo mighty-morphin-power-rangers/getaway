@@ -17,6 +17,7 @@ import { Link } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import BrushIcon from '@mui/icons-material/Brush';
 import PianoIcon from '@mui/icons-material/Piano';
+import { alignProperty } from '@mui/material/styles/cssUtils';
 const data = [
   { name: 'Dashboard', icon: <DashboardIcon />, link: '/' },
   { name: 'Growth', icon: <SpaIcon />, link: '/habits' },
@@ -57,14 +58,32 @@ function NavBar() {
 );
 
   return (
-    <div style={{ position: "absolute", top: "0", left: "0" , zIndex:10}}>
+    <div style={{
+      position: "absolute",
+      top: "0",
+      left: "0",
+      zIndex:20,
+      backgroundImage: "url('https://i.imgur.com/hyj9pA8.png')",
+      backgroundSize: "cover",
+      width: "100vw",
+      height: "40%",
+      display: "flex",
+      alignItems: "flex-start",
+      padding: "10px",
+    }}>
+      <Link to="/">
+      <img src="https://i.imgur.com/NInXwHl.png" style={{ height: "100px", marginRight: "auto",display: "flex",
+      alignItems: "flex-start", }}/>
+      </Link>
+      <div style={{padding:"20px" }}>
       <Button onClick={() => setOpen(true)}>
-        <MenuIcon />
+        <MenuIcon sx={{color:"#FFABAA"}}/>
       </Button>
       <Drawer open={open} anchor={'left'} onClose={() => setOpen(false)}  PaperProps={{ style: { backgroundColor: 'rgb(120, 138, 202)' } }} >
         {getList()}
       </Drawer>
-      <Button onClick={logout}>Logout</Button>
+      <Button onClick={logout} sx={{color:"#FFABAA"}}>Logout</Button>
+      </div>
     </div>
   );
 }

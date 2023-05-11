@@ -49,7 +49,7 @@ console.log(userId)
 
  const [ result, setResult] = useState({
 
-      photos:'',
+      photos:null,
       name:'',
       icon_background_color:'',
       current_opening_hours:{
@@ -93,7 +93,7 @@ if(result){
               <CardMedia
           component="img"
           height="194"
-          image= "https://i.imgur.com/bMZzqTo.jpg"
+          image= {result.photos?result.photos:"https://i.imgur.com/3I3F5sh.png"}
           alt="relax"
         />
               {result.current_opening_hours?

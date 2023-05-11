@@ -69,6 +69,23 @@ router.get('/details', (req:any, res:any)=>{
   })
 })
 
+router.get('/photo', (req:any, res:any)=>{
+  console.log(req.query)
+  axios.get('https://maps.googleapis.com/maps/api/place/photo', {
+    params:{
+      maxwidth:2500,
+      photoreference: req.query.photoreference,
+      key: GOOGLE_PLACES_API
+    }
+  })
+  .then((response)=>{
+    console.log(response.data, "yehaw")
+    res.status(200).send(response.data)
+  })
+  .catch((err)=>{
+    console.error('error', err)
+  })
+})
 
 
 router.post('/save-therapist', (req:any, res: any) => {

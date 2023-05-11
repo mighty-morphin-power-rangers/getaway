@@ -54,7 +54,7 @@ painting.url = `data:image/png;base64,${base64String}`;
       textAlign:'center',
       marginBottom:'250px',
       padding:'30px'
-    }}>
+    }} id="painting">
 <p>Saved Paintings</p>
 <div>
   {paintings && paintings.length > 0 ? (
