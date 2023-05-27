@@ -142,7 +142,7 @@ const AffirmationEntry: React.FC<AffirmationEntryProps> = ({
         id='affirmations'
         style={{ display: 'flex', justifyContent: 'center' }}
       >
-        <Box boxShadow={7}>
+
           <Card
             variant='outlined'
             id={`card-${entryId}`}
@@ -151,18 +151,14 @@ const AffirmationEntry: React.FC<AffirmationEntryProps> = ({
               display: 'flex',
               alignItems: 'center',
               color: 'black',
+              borderRadius: '20px',
+              padding: '1%',
+              boxShadow: '0px 0px 10px rgba(0, 0, 0, 0.2)'
             }}
           >
             {
               <React.Fragment>
                 <CardContent>
-                  <Typography
-                    sx={{ fontSize: 14 }}
-                    color='text.secondary'
-                    gutterBottom
-                  >
-                    {/* Word of the Day */}
-                  </Typography>
                   <Typography variant='h5' component='div'>
                     <div
                       id={`title-${entryId}`}
@@ -193,9 +189,6 @@ const AffirmationEntry: React.FC<AffirmationEntryProps> = ({
                       )}
                     </div>
                   </Typography>
-                  <Typography sx={{ mb: 1.5 }} color='text.secondary'>
-                    {/* adjective */}
-                  </Typography>
                   <Typography variant='body2'>
                     <div id={`affirmationList-${entryId}`}>
                       {affirmations.map((affirmation: string) => (
@@ -204,14 +197,15 @@ const AffirmationEntry: React.FC<AffirmationEntryProps> = ({
                     </div>
                   </Typography>
                 </CardContent>
-                <CardActions  style={{display: 'fiex', justifyContent: 'flex-end' }}>
+                <div style={{ marginLeft: 'auto' }}>
+                <CardActions>
                   <div>
                   <div id={`practice-${entryId}`}>
                     {/* interactive affirmation button */}
                       <IconButton
                       component={Link}
                       to={`/affirmation-practice/?entryId=${entryId}&user=${user}`}
-                        style={{ marginTop: '15px', cursor: 'pointer' }}
+                        style={{ marginTop: '15px', cursor: 'pointer', color: '#fbd974'}}
                       >
                         <AutoAwesomeIcon />
                       </IconButton>
@@ -237,10 +231,10 @@ const AffirmationEntry: React.FC<AffirmationEntryProps> = ({
                     </IconButton>
                   </div>
                 </CardActions>
+                </div>
               </React.Fragment>
             }
           </Card>
-        </Box>
       </div>
       <br></br>
     </div>

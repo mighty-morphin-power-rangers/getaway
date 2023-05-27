@@ -92,8 +92,8 @@ console.log('staff', staff)
 
   return (
 <div style={{background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"}}>
-    <div style={{margin: '40px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em",}}>
-    <h3>ITS OKAY TO ASK FOR HELP</h3>
+    <div style={{margin: '40px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
+    <h3 style={{marginTop:"300px"}}>ITS OKAY TO ASK FOR HELP</h3>
     <p style={{width:'50%'}}>
     If you’re thinking about suicide, are worried about a friend or loved one, or would like emotional support, the Lifeline network is available 24/7 across the United States.
     </p>

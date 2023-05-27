@@ -66,7 +66,7 @@ function NavBar() {
       backgroundImage: "url('https://i.imgur.com/hyj9pA8.png')",
       backgroundSize: "cover",
       width: "100vw",
-      height: "40%",
+      height: "50%",
       display: "flex",
       alignItems: "flex-start",
       padding: "10px",

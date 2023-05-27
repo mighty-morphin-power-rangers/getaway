@@ -19,11 +19,6 @@ const AffirmationSpeech = () => {
     const [affirmations, setAffirmations] = useState<string[]>([]);
     const [currentAffirmationIndex, setCurrentAffirmationIndex] = useState(0);
     const [showText, setShowText] = useState(true);
-    const [audio] = useState(new Audio('https://drive.google.com/uc?export=download&id=1K0vLksQxYQ58YGX8cbRhm2kc0DdlAzcX'));
-    const [isPlaying, setIsPlaying] = useState(false);
-    const [isOpen, setIsOpen] = useState(false);
-    const [volume, setVolume] = useState(50);
-     console.log(affirmations)
 
     // retrieving affirmations
     useEffect(() => {
@@ -34,34 +29,6 @@ const AffirmationSpeech = () => {
 
     }, [user, entryId])
 
-    // affirmation binaural music
-    useEffect(() => {
-      if (isPlaying) {
-        audio.play();
-      } else {
-        audio.pause();
-      }
-    }, [isPlaying]);
-
-    const handlePlayClick = () => {
-      setIsPlaying(true);
-    };
-
-    const handlePauseClick = () => {
-      setIsPlaying(false);
-    };
-
-    const handleVolumeChange = (e: any) => {
-        const newVolume = e.target.value
-        setVolume(newVolume)
-        audio.volume = newVolume / 100;
-    }
-
-
-    // music settings pop-up menu
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-      };
 
 // openAI call for reward response
 const rewardResponse = useCallback(async (affirmation: string) => {
@@ -156,7 +123,7 @@ const rewardResponse = useCallback(async (affirmation: string) => {
 
 
     return (
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundImage:`url(https://i.pinimg.com/originals/41/22/14/41221480bc8178738918624c23ef23f9.jpg)`, backgroundPosition: 'center'}}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundImage:`url(https://i.pinimg.com/originals/41/22/14/41221480bc8178738918624c23ef23f9.jpg)`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: '100%'}}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <IconButton component="button" onClick={handleStartRecording} disabled={isRecording}>
@@ -169,7 +136,7 @@ const rewardResponse = useCallback(async (affirmation: string) => {
 
        <div style={{ fontSize: 30 }}  className={showText ? 'fade-in' : 'fade-out'}>
   {rewardText !== '' ? (
-    <div dangerouslySetInnerHTML={{ __html: rewardText }} />
+    <div style={{ maxWidth: '500px' }} dangerouslySetInnerHTML={{ __html: rewardText }} />
   ) : (
     <div>{currentAffirmation ? currentAffirmation.replace(/,/g, " ") : ""}</div>
   )}
@@ -179,18 +146,6 @@ const rewardResponse = useCallback(async (affirmation: string) => {
         <Button variant="text" size="large" onClick={() => setCurrentAffirmationIndex(0)}>Start Over</Button>}
 
 
-       {/*  <button onClick={toggleMenu}>Open Menu</button>
-      {isOpen && (
-        <div className="popup-menu">
-
-          <button onClick={handlePlayClick}>Play</button>
-          <button onClick={handlePauseClick}>Pause</button>
-
-
-          <input type="range" min="0" max="100" defaultValue="50" onChange={handleVolumeChange} />
-        </div>
-      )}
-        */}
         </div>
         </div>
       );
