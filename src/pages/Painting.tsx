@@ -15,8 +15,7 @@ import axios from "axios";
 import { HexColorPicker } from "react-colorful";
 import PaintingGuide from '../components/PaintingGuide'
 import WavyTop from "../components/WavyTop"
-import zIndex from "@mui/material/styles/zIndex";
-import LavaLamp from "../components/LavaLamp"
+
 
 const Painting = () =>{
 
@@ -219,12 +218,12 @@ return(
       zIndex: 2
     }}
   />
-  <canvas
+  {/* <canvas
     ref={canvasTwoRef}
     id={"canvas2"}
     style={{
       backgroundImage: 'url("https://i.imgur.com/LFCTIUp.png")',
-      opacity:'60%',
+      opacity:isColoring ? "60%" : "0%",
       backgroundSize: 'contain',
       backgroundPosition: 'center',
       backgroundRepeat: 'no-repeat',
@@ -234,10 +233,11 @@ return(
       top: '70%',
       left: '50%',
       transform: 'translate(-50%, -50%) scaleX(-1)',
-      zIndex: isColoring ? 1: -1
+      zIndex: 0
+
 
     }}
-  />
+  /> */}
    <canvas
     style={{
       backgroundImage: 'url("https://i.imgur.com/bEuLk8H.png")',

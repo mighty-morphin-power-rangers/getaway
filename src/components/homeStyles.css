@@ -1,0 +1,51 @@
+.pageMenus {
+  font-size: 100px;
+  /* Other styles for .pageMenus */
+
+  transition: font-size 0.9s;
+  transition: letter-spacing 0.9s;
+}
+
+.pageMenus:hover {
+  cursor: pointer;
+  font-size: 100px;
+  letter-spacing: 8px;
+}
+
+.imgWiggle {
+
+  transition: transform 0.3s;
+}
+
+.imgWiggle:hover {
+  animation: wiggleAnimation 0.5s infinite;
+}
+
+@keyframes wiggleAnimation {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+
+.balloonWiggle:hover {
+  animation: wiggleAnimation 0.5s infinite;
+}
+
+@keyframes wiggleAnimation {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
