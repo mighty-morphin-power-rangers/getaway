@@ -124,7 +124,7 @@ const rewardResponse = useCallback(async (affirmation: string) => {
 
     return (
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundImage:`url(https://i.pinimg.com/originals/41/22/14/41221480bc8178738918624c23ef23f9.jpg)`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: '100%'}}>
-                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',  marginTop: '10em' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
             <IconButton component="button" onClick={handleStartRecording} disabled={isRecording}>
             <MicIcon style={{ fontSize: 40 }}/>

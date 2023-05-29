@@ -212,6 +212,10 @@ const Affirmations = () => {
       renderItem(affirmation)
     ))}
     </Carousel>}
+    {favoriteAffirmations.length === 0 &&
+    <Paper style={{ padding: '5%', borderRadius: '30px', display: 'flex', flexDirection: 'column', alignItems: 'center'  }}>
+      your favorites will show up here ☺
+  </Paper>}
     </div>
     <div id="view-button" style={{padding: '0.8em'}}>
     <Button variant="outlined" component={Link} to={'/affirmation-entries'}>View All Affirmations</Button>

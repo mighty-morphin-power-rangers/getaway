@@ -31,7 +31,9 @@ recommendRoutes.post('/scroll', async (req: any, res: any) => {
     'Flowers',
   ];
 
+
   const fetchImages = async (topic: string) => {
+    console.log(topic)
     try {
       const response = await axios.get(
         'https://api.unsplash.com/photos/random?',
@@ -57,6 +59,7 @@ recommendRoutes.post('/scroll', async (req: any, res: any) => {
     fetchImages(topic1),
     fetchImages(topic2),
   ]);
+
 
   const shuffled = shuffle([...images1, ...images2]);
 

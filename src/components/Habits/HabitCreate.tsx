@@ -37,6 +37,7 @@ const types:Option[] = [
   const [type, setType] = useState<string>(types[0].type);
 
 const onCreate = (): void => {
+  if (newHabit.length > 0){
     const data = {
       habit_name: newHabit,
       googleId: userId?.toString(),
@@ -53,18 +54,22 @@ const onCreate = (): void => {
       });
     setType(types[0].type);
     setNewHabit('');
+  }
+  else {
+    alert('You must enter a habit name');
+  }
   };
 
 
 
   return (
-<div style={{ display: 'inline-block', margin: '10px', height: '400px', width: '200px' }}>
-  <Card sx={{ borderRadius: 0, backgroundColor: '#CCD7FF', padding: '20px' }}>
+<div style={{ display: 'inline-block', height: '400px', width: '200px' }}>
+  <Card sx={{  backgroundColor: 'rgb(204, 215, 255)', padding: '20px', boxShadow: 'none' }}>
     <TextField
       required
       id='outlined-required'
       label='Required'
-      helperText='Enter Tracking'
+      helperText='Enter Habit'
       value={newHabit}
       onChange={(event) => setNewHabit(event.target.value)}
       style={{ marginTop: '10px', marginBottom: '10px', width: '100%' }}
@@ -86,7 +91,7 @@ const onCreate = (): void => {
         </MenuItem>
       ))}
     </TextField>
-    <Button variant='contained' color='primary' style={{ marginTop: '10px', width: '100%' }} onClick={onCreate}>
+    <Button variant='text' color='primary' style={{ marginTop: '10px', width: '100%' }} onClick={onCreate}>
       Create Habit
     </Button>
   </Card>
