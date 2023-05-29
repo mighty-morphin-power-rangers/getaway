@@ -251,12 +251,12 @@ const MusicBar = () =>{
 // *  AUDIO ICONS  *
 // *****************
 const customIcons = {
-  play: <PlayArrowOutlinedIcon style={{ color: 'rgb(120, 138, 202)' }} />,
-  pause: <PauseOutlinedIcon style={{ color: 'rgb(120, 138, 202)' }} />,
-  rewind: <FastRewindIcon style={{ color: 'rgb(120, 138, 202)' }} />,
-  forward: <FastForwardIcon style={{ color: 'rgb(120, 138, 202)' }} />,
-  previous: <SkipPreviousOutlinedIcon style={{ color: 'rgb(120, 138, 202)' }} />,
-  next: <SkipNextOutlinedIcon style={{ color: 'rgb(120, 138, 202)' }} />,
+  play: <PlayArrowOutlinedIcon style={{ color: 'rgb(120, 138, 202)',  marginBottom: '7px' }} />,
+  pause: <PauseOutlinedIcon style={{ color: 'rgb(120, 138, 202)',  marginBottom: '7px' }} />,
+  rewind: <FastRewindIcon style={{ color: 'rgb(120, 138, 202)',  marginBottom: '5px' }} />,
+  forward: <FastForwardIcon style={{ color: 'rgb(120, 138, 202)',  marginBottom: '5px' }} />,
+  previous: <SkipPreviousOutlinedIcon style={{ color: 'rgb(120, 138, 202)',  marginBottom: '5px' }} />,
+  next: <SkipNextOutlinedIcon style={{ color: 'rgb(120, 138, 202)',  marginBottom: '5px' }} />,
   loop: <LoopIcon style={{ color: 'rgb(120, 138, 202)' }} />,
   loopOff: <ReplayOutlinedIcon style={{ color: 'rgb(120, 138, 202)' }} />,
   volume: <VolumeUpIcon style={{ color: 'rgb(120, 138, 202)' }} />,
@@ -311,7 +311,7 @@ const customIcons = {
           style={{
             width: '95%',
             margin:'40px',
-            borderRadius:'30px',
+            borderRadius:'20px',
             backgroundColor:'#FFFFFF',
             letterSpacing:"0.3em",
             boxShadow: '0 0 10px 5px rgba(120, 138, 202, 0.3)',
@@ -320,21 +320,32 @@ const customIcons = {
             layout='horizontal'
             autoPlay={false}
             src={playlists[currentPlaylistIndex].songs[currentTrackIndex].src}
-            header={playlists[currentPlaylistIndex].songs[currentTrackIndex].title}
-            footer={playlists[currentPlaylistIndex].songs[currentTrackIndex].artist}
+            header={[playlists[currentPlaylistIndex].songs[currentTrackIndex].title, " - ", playlists[currentPlaylistIndex].songs[currentTrackIndex].artist]}
+            // footer={playlists[currentPlaylistIndex].songs[currentTrackIndex].artist}
             showSkipControls={true}
             onEnded={handleNextTrack}
             onClickNext={handleNextTrack}
             onClickPrevious={handlePreviousTrack}
-            customAdditionalControls={
-              [
-                RHAP_UI.LOOP,
-                <><label htmlFor="playlist-select">Playlist:</label><select id="playlist-select" value={currentPlaylistIndex} onChange={handlePlaylistSelect}>
-                  {playlists.map((playlist, index,) => (
-                    <option key={index} value={index}>{playlist.title}</option>
+            customAdditionalControls={[
+              RHAP_UI.LOOP,
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <label htmlFor="playlist-select" style={{ marginLeft: '100px', marginBottom: '5px' }}>
+                  Playlist:
+                </label>
+                <select
+                  id="playlist-select"
+                  value={currentPlaylistIndex}
+                  onChange={handlePlaylistSelect}
+                  style={{marginBottom: '5px'}}
+                >
+                  {playlists.map((playlist, index) => (
+                    <option key={index} value={index}>
+                      {playlist.title}
+                    </option>
                   ))}
-                </select></>
-              ]}
+                </select>
+              </div>,
+            ]}
             customIcons={customIcons}
           />
         </>

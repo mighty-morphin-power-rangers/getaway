@@ -9,6 +9,13 @@ import Tracking from './Tracking';
 import axios from 'axios';
 import Box from '@mui/material/Box';
 import DeleteIcon from '@mui/icons-material/Delete';
+import KebabDiningIcon from '@mui/icons-material/KebabDining';
+import SkateboardingIcon from '@mui/icons-material/Skateboarding';
+import PsychologyIcon from '@mui/icons-material/Psychology';
+import SpaIcon from '@mui/icons-material/Spa';
+import CheckIcon from '@mui/icons-material/Check';
+import { Check } from '@mui/icons-material';
+
 
 interface HabitCardProps {
   id: number;
@@ -97,25 +104,30 @@ const HabitCard = ({
 
   return (
     <div style={{ display: 'inline-block', margin: '10px' }} >
-      <Card sx={{ borderRadius: '10px', backgroundColor: 'rgba(255, 0, 0, 0.5)', padding: '20px', height: '420px', width: '220px' }}
+      <Card sx={{ borderRadius: '10px', backgroundColor: 'rgba(255, 0, 0, 0.5)', padding: '20px',
+      //  height: '420px',
+        width: '220px' }}
         onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(200,0, 0, .5)'}
   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 0, 0, 0.5)'}
   >
         <CardContent>
+             {/* <Button variant="outlined" onClick={handleDelete} startIcon={<DeleteIcon />}>
+        delete
+      </Button> */}
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             {habit_name}
           </Typography>
           <Typography variant="h5" component="div">
           </Typography>
           <Typography sx={{ mb: 1.5 }} color="text.secondary">
-            Habit Type: {habit_type}
+            {habit_type}
             {renderImage(dates.length)}
           </Typography>
           <Typography variant="body2">
             
           </Typography>
           <Typography variant="body2">
-            <Button variant="outlined" onClick={handleComplete} startIcon={<DeleteIcon />}>
+            <Button variant="outlined" onClick={handleComplete} startIcon={<Check />}>
         complete
       </Button>
           <Button variant="outlined" onClick={handleDelete} startIcon={<DeleteIcon />}>
@@ -124,13 +136,13 @@ const HabitCard = ({
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size="small" onClick={openTracking}>Tracking</Button>
+          {/* <Button size="small" onClick={openTracking}>Tracking</Button> */}
         </CardActions>
       </Card>
-
+{/* 
       {isTrackingOpen && (
         <Tracking  id={id} habit_createdAt={habit_createdAt}  />
-      )}
+      )} */}
     </div>
   )
 }

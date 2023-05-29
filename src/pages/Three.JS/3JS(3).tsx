@@ -96,13 +96,6 @@ function toRadians(angle: number) {
   return angle * (Math.PI / 180);
 }
 //MOUSE MOVEMENT
-
-    // window.addEventListener('resize', () => {
-    //   camera.aspect = window.innerWidth / window.innerHeight;
-    //   camera.updateProjectionMatrix();
-    //   renderer.setSize(window.innerWidth, window.innerHeight);
-    // });
-
     // Attach the renderer to our ref's current DOM node
     const mountNode = mountRef.current;
     if (mountNode) {

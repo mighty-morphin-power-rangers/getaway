@@ -24,8 +24,8 @@ const mainTheme = createTheme({
     fontFamily: 'Inter',
   }
 });
-
-
+// THIS IS HIDING THE OVERFLOW RIGHT AND LEFT ADDED BY ZACH
+// document.body.style.overflowX = 'hidden'
 
 const domNode: any = document.getElementById('root');
 const root = createRoot(domNode);

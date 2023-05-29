@@ -8,20 +8,18 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 
 const Meditation = () => {
-  //creating state for each exercise to open/close
-  const [exercise1Open, setExercise1Open] = useState(false);
+  // creating state for each exercise to open/close
+  const [exercise1Open, setExercise1Open] = useState(true);
   const [exercise2Open, setExercise2Open] = useState(false);
   const [exercise3Open, setExercise3Open] = useState(false);
-  const [reflectionOpen, setReflectionOpen] = useState(false);
   const [currentText, setCurrentText] = useState("");
   const [showCards, setShowCards] = useState(false);
-
 
   const handleClick = () => {
     setShowCards(!showCards);
   };
 
-  //handlers for opening and closing
+  // handlers for opening and closing
   const handleExercise1Click = () => {
     setExercise1Open(true);
     setExercise2Open(false);
@@ -51,11 +49,7 @@ const Meditation = () => {
     setCurrentText("");
   }
 
-  const handleReflectionClick = () => {
-    setReflectionOpen(!reflectionOpen);
-  };
-
-  // *****************
+   // *****************
   // *   THREE.JS    *
   // *****************
  // useEffect to update currentText based on time elapsed
@@ -121,117 +115,118 @@ useEffect(() => {
   // *****************
 
   return (
-    <main className='meditation-container'>
-<h1 style={{textAlign: "center", margin: "auto"}}>Meditation</h1>
-<p style={{textAlign: "center", margin: "auto"}} >Welcome to the Meditation Station! If you're feeling stressed, anxious, or overwhelmed, you can come and enjoy some nice visualizations and go through various breathing exercises.</p>
-      <article className="exercise-container">
-        <h2>Meditation Exercises</h2>
+    <div className="meditation-container" style={{ background: 'linear-gradient(to top, #9795f0 0%, #fbc8d4 100%)', height: '150vh' }}>
+         <div className="content-wrapper">
+         <h1 style={{ textAlign: "center", margin: "auto"}}>Meditation</h1>
+      <p style={{ textAlign: "center", margin: "auto" }}>Welcome to the Meditation Station! If you're feeling stressed, anxious, or overwhelmed, you can come and enjoy some visualizations and go through various breathing exercises.</p>
+      <div className="exercise-container">
+        <h2>Select A Meditation Exercise:</h2>
         <Button className='exercise-box' variant="outlined" onClick={exercise1Open ? handleExercise1Close : handleExercise1Click}>
-         5-5-5
-       </Button>
-      <br></br>
-      <Button className='exercise-box' variant="outlined" onClick={exercise2Open ? handleExercise2Close : handleExercise2Click}>
-        4-7-8
-      </Button>
-      <br></br>
-      <Button className='exercise-box' variant="outlined" onClick={exercise3Open ? handleExercise3Close : handleExercise3Click}>
-        Zen Breathing
-      </Button>
-      </article>
-      <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-</div>
+          5-5-5
+        </Button>
+        <br></br>
+        <Button className='exercise-box' variant="outlined" onClick={exercise2Open ? handleExercise2Close : handleExercise2Click}>
+          4-7-8
+        </Button>
+        <br></br>
+        <Button className='exercise-box' variant="outlined" onClick={exercise3Open ? handleExercise3Close : handleExercise3Click}>
+          Zen Breathing
+        </Button>
+      </div>
+      <div style={{ display: 'flex', justifyContent: 'space-between' }}> </div>
       {exercise1Open &&
-      <div className="exercise-popup">
-        <div className="exercise-popup-text">{currentText}</div>
-       <div> <ThreeJS1 /> </div>
-       <Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0' }}>
+        <div className="exercise-popup" style={{ marginTop: '500px',  background: 'linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%)' }}>
+          <div className="exercise-popup-text">{currentText}</div>
+          <div> <ThreeJS1 /> </div>
+          <Card className='cards' sx={{ maxWidth: 345, backgroundColor: 'white'  }}>
             <CardContent>
               <Typography variant="h5" component="h2">
-              <b> 5-5-5 Breathing Technique </b>
+                <b> 5-5-5 Breathing Technique </b>
               </Typography>
               <Typography variant="body1" component="p">
-              <br></br>   For this meditation exercise, focus on taking one breath at a time and being in the present moment.
+                <br></br>   For this meditation exercise, focus on taking one breath at a time and being in the present moment.
               </Typography>
               <Typography variant="body1" component="p">
-              <br></br> <b> Step 1 - </b> Inhale slowly through your nose for 5 seconds
+                <br></br> <b> Step 1 - </b> Inhale slowly through your nose for 5 seconds
               </Typography>
               <Typography variant="body1" component="p">
-              <b> Step 2 - </b>Hold your breath for 5 seconds
+                <b> Step 2 - </b>Hold your breath for 5 seconds
               </Typography>
               <Typography variant="body1" component="p">
-              <b> Step 3 - </b>Release the breath through your mouth for 5 seconds
+                <b> Step 3 - </b>Release the breath through your mouth for 5 seconds
               </Typography>
               <Typography variant="body1" component="p">
-              <b>  Step 4 - </b> Repeat as needed
+                <b>  Step 4 - </b> Repeat as needed
               </Typography>
             </CardContent>
           </Card>
-        <Button className="exercise-button" variant="outlined" onClick={handleExercise1Close}>Complete</Button>
-      </div>
-    }
-    {exercise2Open &&
-      <div className="exercise-popup">
-        <div className="exercise-popup-text">{currentText}</div>
-        <p> <ThreeJS2 /></p>
-        <Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0' }}>
-              <CardContent>
-                <Typography variant="h5" component="h2">
+          <Button className="complete-button" variant="outlined" onClick={handleExercise1Close}>Complete</Button>
+        </div>
+      }
+      {exercise2Open &&
+        <div className="exercise-popup" style={{ marginTop: '500px',  background: 'linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%)' }}>
+          <div className="exercise-popup-text">{currentText}</div>
+          <p> <ThreeJS2 /></p>
+          <Card className='cards' sx={{ maxWidth: 345, backgroundColor: 'white' }}>
+            <CardContent>
+              <Typography variant="h5" component="h2">
                 <b> 4-7-8 Breathing Technique </b>
-                </Typography>
-                <Typography variant="body1" component="p">
+              </Typography>
+              <Typography variant="body1" component="p">
                 <br></br> For this meditation exercise, it's important to maintain the 4-7-8 ratio through the steps.
-                </Typography>
-                <Typography variant="body1" component="p">
+              </Typography>
+              <Typography variant="body1" component="p">
                 <br></br> <b> Step 1 - </b> Breath in through the nose for 4 seconds
-                </Typography>
-                <Typography variant="body1" component="p">
-                  <b> Step 2 - </b> Hold your breath for a count of 7 seconds
-                </Typography>
-                <Typography variant="body1" component="p">
+              </Typography>
+              <Typography variant="body1" component="p">
+                <b> Step 2 - </b> Hold your breath for a count of 7 seconds
+              </Typography>
+              <Typography variant="body1" component="p">
                 <b> Step 3 - </b> Exhale through your mouth for a total of 8 seconds
-                </Typography>
-                <Typography variant="body1" component="p">
-              <br></br> <i> * If you're finding it difficult to hold your breath for that long, try the 5-5-5 meditation exercise instead! </i>
-                </Typography>
-              </CardContent>
-            </Card>
-        <Button className="exercise-button" variant="outlined" onClick={handleExercise2Close}>Complete</Button>
-      </div>
-    }
-    {exercise3Open &&
-      <div className="exercise-popup">
-        <div className="exercise-popup-text" >{currentText}</div>
-        <p> <ThreeJS3 /> </p>
-        <Card className='cards' sx={{ maxWidth: 345, backgroundColor: '#D1A1C0' }}>
-              <CardContent>
-                <Typography variant="h5" component="h2">
+              </Typography>
+              <Typography variant="body1" component="p">
+                <br></br> <i> * If you're finding it difficult to hold your breath for that long, try the 5-5-5 meditation exercise instead! </i>
+              </Typography>
+            </CardContent>
+          </Card>
+          <Button className="complete-button" variant="outlined" onClick={handleExercise2Close}>Complete</Button>
+        </div>
+      }
+      {exercise3Open &&
+        <div className="exercise-popup" style={{ marginTop: '500px', background: 'linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%)' }}>
+          <div className="exercise-popup-text">{currentText}</div>
+          <p> <ThreeJS3 /> </p>
+          <Card className='cards' sx={{ maxWidth: 345, backgroundColor: 'white' }}>
+            <CardContent>
+              <Typography variant="h5" component="h2">
                 <b> Zen Breathing </b>
-                </Typography>
-                <Typography variant="body1" component="p">
+              </Typography>
+              <Typography variant="body1" component="p">
                 <br></br>  This is an un-timed technique that requires visualizing your breath.
-                </Typography>
-                <Typography variant="body1" component="p">
+              </Typography>
+              <Typography variant="body1" component="p">
                 <br></br>    <b> Step 1 - </b>Find a comfortable position, sitting or laying down
-                </Typography>
-                <Typography variant="body1" component="p">
+              </Typography>
+              <Typography variant="body1" component="p">
                 <b> Step 2 - </b>Become aware of your breathing, paying attention to how you exhale and inhale
-                </Typography>
-                <Typography variant="body1" component="p">
+              </Typography>
+              <Typography variant="body1" component="p">
                 <b>  Step 3 - </b>Slow down your breathing
-                </Typography>
-                <Typography variant="body1" component="p">
-                <b>  Step 4 - </b>Visualize your breath entering and leaving your lungs. You can put your hand against your chest to become aware of the raising and lowering
-                </Typography>
-                <Typography variant="body1" component="p">
-                <b>  Step 5 - </b>Repeat as needed
-                </Typography>
-              </CardContent>
-            </Card>
-        <Button className="exercise-button" variant="outlined" onClick={handleExercise3Close}>Complete</Button>
+              </Typography>
+              <Typography variant="body1" component="p">
+                <b>  Step 4 - </b>Visualize your breath entering and leaving your lungs. You can put one hand on your abdomen to feel it rise and fall.
+              </Typography>
+              <Typography variant="body1" component="p">
+                <br></br> <i> * This technique can be done for as long as you like. </i>
+              </Typography>
+            </CardContent>
+          </Card>
+          <Button className="complete-button" variant="outlined" onClick={handleExercise3Close}>Complete</Button>
+        </div>
+      }
       </div>
-    }
-  </main>
-);
-  }
+    </div>
+  );
+}
 
 export default Meditation;
