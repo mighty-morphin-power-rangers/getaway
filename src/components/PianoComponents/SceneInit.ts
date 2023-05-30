@@ -62,11 +62,11 @@ export default class SceneInit {
 
     // this.renderer.setSize(container.clientWidth, container.clientHeight);
 
-    this.camera.position.z = 80;
+    this.camera.position.z = 200;
 
     this.clock = new THREE.Clock();
     this.scene = new THREE.Scene();
-    this.scene.background = new THREE.Color('lightskyblue');
+    // this.scene.background = new THREE.Color('rgba(135, 206, 235, 0)'); //use this to see the dimension of the scene 
 
     // NOTE: Load space background.
     // this.loader = new THREE.TextureLoader();
@@ -88,8 +88,10 @@ export default class SceneInit {
     const parameters: WebGLRendererParameters = {
       canvas,
       antialias: true,
+      alpha: true, // Enable transparency
     };
     this.renderer = new WebGLRenderer(parameters);
+    this.renderer.setClearColor(0x000000, 0);
 
     // this.renderer.setSize(window.innerWidth, window.innerHeight);
     this.renderer.setSize(container.clientWidth, container.clientHeight);

@@ -9,6 +9,7 @@ import Grid from '@mui/material/Grid';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Footer from '../components/Footer'
 
 
 export default function SignInSide() {
@@ -69,7 +70,10 @@ export default function SignInSide() {
     style={{ marginRight: '50px' }}
   />
     </div>
-
+    <footer style={{ position: 'absolute', bottom: 0, width: '100%' }}>
+   <Footer></Footer>
+   </footer>
     </div>
+    
   );
 };

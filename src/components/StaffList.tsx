@@ -14,7 +14,7 @@ import { Link } from 'react-router-dom'
 const StaffList = (props:any) => {
 const { staff } = props
 
-console.log("staff", staff)
+// console.log("staff", staff)
 
   const [open, setOpen] = useState(false);
   const [popup, setPopup ] = useState({})

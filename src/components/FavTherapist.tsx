@@ -23,7 +23,7 @@ import { UserContext, UserContextType } from '../App' ;
 
 const FavTherapist = () =>{
   const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };
-console.log(userId)
+// console.log(userId)
 
   interface ExpandMoreProps extends IconButtonProps {
     expand: boolean;
@@ -71,7 +71,7 @@ console.log(userId)
 const getFav: Function = (()=>{
   axios.get(`/therapist/get-therapist/?googleId=${userId}`)
   .then((response:any)=>{
-    console.log(response)
+    // console.log(response)
     setResult(response.data[response.data.length-1])
   })
 })

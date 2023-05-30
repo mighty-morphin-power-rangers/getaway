@@ -11,6 +11,7 @@ import Carousel from 'react-material-ui-carousel';
 import Divider from '@mui/material/Divider';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import CircularProgress from '@mui/material/CircularProgress';
+import Footer from '../components/Footer'
 
 
 
@@ -220,8 +221,10 @@ const Affirmations = () => {
     <div id="view-button" style={{padding: '0.8em'}}>
     <Button variant="outlined" component={Link} to={'/affirmation-entries'}>View All Affirmations</Button>
     </div>
+      <Footer></Footer>
     </div>
       </center>
+    
     </div>
   );
 };

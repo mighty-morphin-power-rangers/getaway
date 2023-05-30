@@ -20,18 +20,24 @@ const Therapist = (props:
 const { therapist, handleOpen } = props;
 
 
-
-
+const images = [
+  "https://i.imgur.com/SaBB5aW.png",
+  "https://i.imgur.com/rrFY6ZP.png",
+  "https://i.imgur.com/wEiGuBG.png",
+  "https://i.imgur.com/oCey8XD.png",
+  "https://i.imgur.com/1XLIhRM.png"
+];
+const randomNumber = Math.floor(Math.random() * 5)
 
 return (
-  <Card sx={{ maxWidth: 345, backgroundColor:'#D1A1C0' }} onClick={()=>handleOpen(therapist)}>
+  <Card sx={{ maxWidth: 345, height:400, backgroundColor:'#D1A1C0' }} onClick={()=>handleOpen(therapist)}>
     <CardActionArea>
       <CardMedia
         component="img"
-        height="200"
-        image="https://i.imgur.com/hMhXRCM.png"
+        height="250px"
+        image={images[randomNumber]}
         alt="therapist icon"
-        style={{ width: "60%", display: "flex", alignItems: "center", justifyContent: "center", padding:"20px"}}
+        style={{ width: "75%", display: "flex", alignItems: "center"}}
       />
     <IconButton
   aria-label="therapists"
@@ -49,11 +55,8 @@ return (
 
 </IconButton>
       <CardContent>
-        <Typography gutterBottom variant="body1" component="div">
+        <Typography sx={{color:"white"}}gutterBottom variant="body1" component="div">
           {therapist.name}
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          {therapist.vicinity}
         </Typography>
         {therapist.opening_hours?  <Typography variant="body2" color="text.secondary">
           {therapist.opening_hours.open_now ? "Open" : "Closed"}

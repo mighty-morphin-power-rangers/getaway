@@ -27,7 +27,7 @@ const data = [
   { name: 'Affirmations', icon: <FavoriteIcon />, link: '/affirmations' },
   { name: 'Painting', icon: <BrushIcon />, link: '/painting' },
   { name: 'Music', icon: <PianoIcon />, link: '/music' },
-  { name: 'Profile', icon: <AccountCircleIcon />, link: '/profile' },
+  // { name: 'Profile', icon: <AccountCircleIcon />, link: '/profile' },
 ];
 
 function NavBar() {

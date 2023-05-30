@@ -63,8 +63,8 @@ const PlayablePiano = () => {
   }, []);
 
   return (
-    <div ref={containerRef} style={{ width: '50%', height: '100%' }}>
-      <canvas ref={canvasRef} style={{ borderRadius: '1000px' }}></canvas>
+    <div ref={containerRef} style={{ width: '50%', height: '600px' }}>
+    <canvas ref={canvasRef} ></canvas>
     </div>
   );
 };

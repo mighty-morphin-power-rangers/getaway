@@ -15,6 +15,8 @@ import axios from "axios";
 import { HexColorPicker } from "react-colorful";
 import PaintingGuide from '../components/PaintingGuide'
 import WavyTop from "../components/WavyTop"
+import Footer from '../components/Footer'
+
 
 
 const Painting = () =>{
@@ -280,7 +282,7 @@ return(
 </div>
 
 
-
+<Footer></Footer>
 
 
 </div>

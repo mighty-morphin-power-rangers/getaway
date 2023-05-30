@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 // import Recommend from '../components/Recess/Recommendations'
 import { UserContext, UserContextType } from '../App';
 
+import Footer from '../components/Footer'
 
 import ScrollWall from  '../components/Recess/ScrollWall'
 
@@ -10,8 +11,11 @@ const Recess = () =>{
 
 return (
  <div style={{background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"}}>
-    <div style={{marginTop: '80px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
-    <h3 style={{marginTop:"300px"}}>Recess</h3>
+    <div style={{marginTop: '80px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center",    fontSize:"20px",
+    color: "white",
+    textShadow: "2px #000000",
+    padding: '5%'}}>
+    <h3 style={{marginTop:"300px", fontSize:"70px",}}>recess</h3>
     <img src="https://i.ibb.co/fShgM1X/Sandy-Bus-32-Single-11.png" style={{height: '400px', width: '400px'}}></img>
     <p style={{width:'50%'}}>
      "By exploring new activities and hobbies, you can take small steps towards better mental health and discover a whole world of possibilities you never knew existed."
@@ -60,6 +64,7 @@ return (
       <ScrollWall />
     </div>
   </div>
+  <Footer></Footer>
   </div>
 );
   }

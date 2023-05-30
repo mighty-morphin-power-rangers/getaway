@@ -5,7 +5,7 @@ import MicIcon from '@mui/icons-material/Mic';
 import IconButton from '@mui/material/IconButton';
 import StopCircleIcon from '@mui/icons-material/StopCircle';
 import Button from '@mui/material/Button'
-
+import Footer from "../Footer";
 
 
 
@@ -123,6 +123,7 @@ const rewardResponse = useCallback(async (affirmation: string) => {
 
 
     return (
+      <div>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', backgroundImage:`url(https://i.pinimg.com/originals/41/22/14/41221480bc8178738918624c23ef23f9.jpg)`, backgroundPosition: 'center', backgroundRepeat: 'no-repeat', backgroundSize: '100%'}}>
                   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center',  marginTop: '10em' }}>
                     <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
@@ -147,7 +148,15 @@ const rewardResponse = useCallback(async (affirmation: string) => {
 
 
         </div>
+        <div style={{ position: 'absolute', bottom: 0, width: '100%' }}>
+       <Footer></Footer>
+       </div>
         </div>
+        
+        
+      
+        </div>
+        
       );
 }
 

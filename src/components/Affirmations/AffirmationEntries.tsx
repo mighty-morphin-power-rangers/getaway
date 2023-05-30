@@ -5,7 +5,7 @@ import axios from 'axios';
 import { UserContext, UserContextType } from '../../App';
 import AffirmationEntry from './AffirmationEntry'
 import Button from '@mui/material/Button';
-
+import Footer from '../Footer'
 const AffirmationEntries = () => {
     const [retrievedAffirmations, setRetrievedAffirmations] = useState<string[]>([]);
     const { userName, userId }: UserContextType = useContext(UserContext) ?? {userName: null, userId: null};
@@ -37,6 +37,7 @@ const AffirmationEntries = () => {
              <AffirmationEntry key={entry.user_id} user={entry.user_id} entryId={entry.id} title={entry.title} favorite={entry.favorite} affirmations={entry.affirmationList.split('/n')}  />))}
 
         </div>
+        <Footer></Footer>
         </div>
     );
 }

@@ -1,6 +1,9 @@
 import React from 'react';
 import PlayablePiano from '../components/PianoComponents/PlayablePiano';
-import TimeSpentOnPage from '../components/PianoComponents/TimeSpentOnPage';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+
 const Music = () => {
   return (
     <div
@@ -9,27 +12,32 @@ const Music = () => {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        margin: '0 auto',
         textAlign: 'center',
-      }}
+        background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"
+        }}
     >
-      <h1>Welcome the Music Room</h1>
+      <h1 style={{ fontSize: "70px", color: "white", marginTop: '450px',}}> Welcome To The Music Room </h1>
+      <p style={{ fontSize: "30px", color: "white" }}> <i>Here you can play on a virtual piano with your keys!</i> </p>
       <div>
-        <h3>Key Controls</h3>
-        <p>
-          {' '}
-          <strong>Black</strong>: 2 - 3 - 5 - 6 - 7 - S - D - G - H - J
-        </p>
-        <p>
-          <strong>White</strong>: 1 - Q - W - E - R - T - Y - U
-        </p>
-        <p>
-          <strong>White</strong>: Z - X - C - V - B - N - M - ,
-        </p>
+        <Card>
+      <CardContent>
+      <Typography variant="h6" style={{ fontSize: "20px" }}>
+      Key Controls
+        </Typography>
+        <Typography variant="h6">
+          Black: <span style={{ fontSize: "15px" }}> <i> 2 - 3 - 5 - 6 - 7 - S - D - G - H - J</i></span>
+        </Typography>
+        <Typography variant="h6">
+          White: <span style={{ fontSize: "15px" }}> <i> 1 - Q - W - E - R - T - Y - U</i></span>
+        </Typography>
+        <Typography variant="h6">
+          White: <span style={{ fontSize: "15px" }}> <i> Z - X - C - V - B - N - M - ,</i></span>
+        </Typography>
+      </CardContent>
+    </Card>
       </div>
       <PlayablePiano />
-      <p>Click and drag the piano with your cursor!</p>
-      <TimeSpentOnPage />
+      <p style={{ fontSize: "40px", color: "white", }}>Click and drag the piano with your cursor!</p>
     </div>
   );
 };

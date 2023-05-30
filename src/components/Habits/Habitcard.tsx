@@ -105,7 +105,7 @@ const HabitCard = ({
   return (
     <div style={{ display: 'inline-block', margin: '10px' }} >
       <Card sx={{ borderRadius: '10px', backgroundColor: 'rgba(255, 0, 0, 0.5)', padding: '20px',
-      //  height: '420px',
+        height: '335px',
         width: '220px' }}
         onMouseEnter={(e) => e.currentTarget.style.backgroundColor = 'rgba(200,0, 0, .5)'}
   onMouseLeave={(e) => e.currentTarget.style.backgroundColor = 'rgba(255, 0, 0, 0.5)'}

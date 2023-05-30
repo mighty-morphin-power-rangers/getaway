@@ -73,7 +73,7 @@ const AffirmationEntry: React.FC<AffirmationEntryProps> = ({
 
   // when user clicks outside the input box, cancel editing
   const handleTitleBlur = () => {
-    console.log('hello');
+    // console.log('hello');
     setIsEditing(false);
   };
 

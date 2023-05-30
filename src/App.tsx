@@ -20,6 +20,8 @@ import Painting from './pages/Painting';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Switch } from '@mui/material';
+import Footer from './components/Footer'
+import ScrollToTopFab from './components/ScrollToTop';
 // Theodore import stuff
 import Music from '../src/pages/Music';
 // import PlayablePiano from './components/PianoComponents/PlayablePiano';
@@ -64,12 +66,12 @@ const App = () => {
     getUser();
   }, []);
 
-  console.log(user);
+  // console.log(user);
 
   return (
     <UserContext.Provider value={{ userName, userId }}>
       <BrowserRouter>
-        <div>
+        <div >
         {user && <NavBar />}
           <Routes>
             {user ? (
@@ -97,9 +99,12 @@ const App = () => {
             <Route path='/painting' element={<Painting />} />
             <Route path='/music' element={<Music />} />
             <Route path='/therapist-profile' element={<TherapistProfile />} />
-            <Route path='/profile' element={<Profile />} />
+            {/* <Route path='/profile' element={<Profile />} /> */}
+             {/* <Footer></Footer> */}
           </Routes>
+          
           <MusicBar />
+          <ScrollToTopFab />
         </div>
       </BrowserRouter>
     </UserContext.Provider>
