@@ -147,13 +147,13 @@ const CheckIn = () => {
       >
         <Button
           onClick={FeelingSelector}
-          sx={{ background: '#0162BC', color: 'white', marginBottom: '5px' }}
+          sx={{ background: 'rgba(0, 191, 194, 1)', color: 'white', marginBottom: '5px' }}
         >
           High Energy, Pleasant
         </Button>
         <Button
           onClick={FeelingSelector}
-          sx={{ background: '#F16D5B', color: 'white', marginBottom: '5px' }}
+          sx={{ background: 'rgba(252, 110, 71, 1)', color: 'white', marginBottom: '5px' }}
         >
           High Energy, Unpleasant
         </Button>
@@ -165,7 +165,7 @@ const CheckIn = () => {
         </Button>
         <Button
           onClick={FeelingSelector}
-          sx={{ background: '#EF9073', color: 'white' }}
+          sx={{ background: 'rgba(255, 153, 158, 1)', color: 'white' }}
         >
           Low Energy, Unpleasant
         </Button>
