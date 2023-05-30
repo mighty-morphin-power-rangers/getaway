@@ -19,7 +19,7 @@ const Habits = () =>{
 
   // creates user variables based on context
    const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };;
-  //  console.log(userName, userId)
+
 const types:Option[] = [
   {
     type: "Exercise"
