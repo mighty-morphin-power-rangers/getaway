@@ -12,6 +12,8 @@ export default class Piano {
   flatKeys: Key[];
   naturalKeys: Key[];
   audioContext: AudioContext;
+  originalRotation: THREE.Euler | undefined;
+
 
   constructor(audioContext: AudioContext) {
     this.flatKeys = [
@@ -54,6 +56,7 @@ export default class Piano {
     this.audioContext = audioContext;
   }
 
+  
   validKey(input: string): Key | undefined {
     const flatKey = this.flatKeys.find((key) => key.input === input);
     const naturalKey = this.naturalKeys.find((key) => key.input === input);

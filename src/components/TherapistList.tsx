@@ -57,7 +57,7 @@ const TherapistList = (props: { therapists: Therapist[] }) => {
   </style>
   <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {therapists.map((therapist:Therapist) => (
-         <Grid item key={therapist.place_id} xs={4} sm={4} md={4} lg={4} style={{ width:"250px", height: "350px", overflow: "hidden" }}>
+         <Grid item key={therapist.place_id} xs={4} sm={4} md={4} lg={4} style={{ width:"250px", height: "400px", overflow: "hidden" }}>
           <Therapist key={therapist.place_id} therapist ={therapist} handleOpen={handleOpen} />
           </Grid>
         ))}

@@ -5,6 +5,7 @@ import React, {useRef, useEffect, useState, useContext} from "react";
 import { Link } from "react-router-dom";
 import { UserContext, UserContextType } from '../App';
 import  Button from '@mui/material/Button';
+import "./savedPainting.css";
 
 const SavedPaintings = () =>{
   const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };
@@ -28,17 +29,18 @@ painting.url = `data:image/png;base64,${base64String}`;
   const deletePaintings=()=>{
     axios.delete('/paintings/delete',{
       data: {
-        id: paintings[0].id
+        id: paintings[paintings.length - 1].id
       }
     })
     .then(()=>{
-      console.log("painting Deleted")
+      getPaintings();
+      // console.log("painting Deleted")
     })
   }
 
     useEffect(()=>{
       getPaintings()
-    }, [])
+    }, [paintings])
 
 
 
@@ -54,7 +56,7 @@ painting.url = `data:image/png;base64,${base64String}`;
     }} id="painting">
 
 <div style={{ zIndex: 2,
-     backgroundImage: paintings && paintings.length > 0 ? `url(${paintings[0].url})` : '',
+     backgroundImage: paintings && paintings.length > 0 ? `url(${paintings[paintings.length - 1].url})` : '',
      backgroundSize: '700px 500px',
      backgroundPosition: 'center',
      backgroundRepeat: 'no-repeat',
@@ -106,15 +108,25 @@ painting.url = `data:image/png;base64,${base64String}`;
 
     </div>
 
-<div style={{position:"absolute", zIndex:5, top:"99%", left: "50%"}}>
+<div style={{position:"absolute", zIndex:5, top:"99%", left: "50%", margin:"10px"}}>
 <IconButton
           onClick={deletePaintings}
           style={{ marginTop: '15px', cursor: 'pointer' }}
         >
           <DeleteOutlineOutlinedIcon />
-        </IconButton><Link to={{ pathname: '/painting' }} style={{ textDecoration: "none" }}>
-            <Button sx={{ backgroundColor: "#788ACA" }}>Paint More</Button>
-          </Link>
+        </IconButton>
+        <Link to={{ pathname: '/painting' }} style={{ textDecoration: "none" }}>
+  <img className="brush"
+    src="https://i.imgur.com/OL2LlrX.png"
+    alt="Paint More"
+    style={{
+      width: '60px',
+      height: '60px',
+      transition: 'transform 0.3s',
+      cursor: 'pointer',
+    }}
+  />
+</Link>
 </div>
 
 </div>

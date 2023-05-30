@@ -14,7 +14,8 @@ import HomePartTwo from "../components/HomePartTwo"
 import { Link } from 'react-router-dom';
 import NavigateNextIcon from '@mui/icons-material/NavigateNext';
 import IconButton from '@mui/material/IconButton';
-
+import Footer from '../components/Footer'
+import ScrollTop from '../components/ScrollToTop'
 
 
    interface home {
@@ -43,7 +44,7 @@ const Home = () => {
         .then(({ data }) => {
           if (data && data.length > 0) { // check if data is not empty
             setFavoriteAffirmations(data);
-            console.log(data, 'here');
+            // console.log(data, 'here');
           }
         })
         .catch((error) => console.error(error, 'nooo'));
@@ -90,7 +91,7 @@ const Home = () => {
 
 
   return (
-    <div ref={sectionRef}>
+    <div ref={sectionRef} style={{backgroundColor:"#009CAD"}}>
 
 <div >
 <HomePartOne/>
@@ -242,7 +243,7 @@ const Home = () => {
     }}>
       <h3>HABIT CHARTS</h3>
        <div  style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between' }}>
-      {habits.slice(0, 4).map((habit) => (
+      {habits.slice(0, 3).map((habit) => (
         <HabitHome key={habit.id}
           habit_name={habit.habit_name}
            habit_type={habit.habit_type}
@@ -273,22 +274,12 @@ const Home = () => {
       <SavedPaintings/>
 
 </div>
-    </div>
-    <div
 
-    style={{
-      borderRadius:'40px',
-      margin:'60px auto',
-      color: '#5C6B9E',
-      backgroundColor:'#5C6B9E',
-
-      width: '70%',
-      height: '7px',
-      textAlign:'center',
-      marginBottom: '100px'
-    }}
-  >bottom shit </div>
     </div>
+
+ <Footer></Footer>
+    </div>
+
   );
 };
 

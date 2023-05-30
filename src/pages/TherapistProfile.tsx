@@ -4,6 +4,8 @@ import { useEffect, useState} from 'react'
 import { useLocation } from 'react-router-dom'
 import BookNowButton from '../components/BookNowButton';
 import dayjs from 'dayjs';
+import Footer from '../components/Footer'
+
 
 const TherapistProfile = () =>{
 
@@ -11,18 +13,18 @@ const location = useLocation();
 const { therapist } = location.state
 
 const  [appointment, setAppointment ]:any = useState(null)
-console.log(appointment)
+// console.log(appointment)
 
 
   return(
-<div style={{padding:"200px"}}>
+<div style={{padding:"200px", backgroundColor:"#8989ba"}}>
 
-<div style={{display:'flex', flexDirection: "column", alignItems: "center", marginTop:"60px"}}>
+<div style={{display:'flex', flexDirection: "column", alignItems: "center", marginTop:"60px", color:"white"}}>
   <img src={therapist.photoURL} style={{borderRadius: "50%", width: "300px", height: "300px"}} />
-  <h1 style={{textAlign: "center"}}>{therapist.name}, {therapist.licenseType}</h1>
-  <h3>{therapist.skills}</h3>
+  <h1 style={{textAlign: "center", fontSize:"40px"}}>{therapist.name}, {therapist.licenseType}</h1>
+  <h2>{therapist.skills}</h2>
   <BookNowButton setAppointment = {setAppointment}/>
-  {appointment? <h3>You have an Appointment on {appointment}</h3>: <h3>Book Today</h3>}
+  {appointment? <h3>You have an Appointment on {appointment}</h3>: <h2>Book Today</h2>}
 </div>
 
 <div
@@ -38,7 +40,7 @@ console.log(appointment)
     }}
   />
 
-  <div style={{padding:'60px'}}>
+  <div style={{padding:'60px', color:"white"}}>
     <h3>ABOUT ME</h3>
 <p>
 {therapist.aboutMe}
@@ -101,7 +103,7 @@ return (
 
   </div>
 
-
+<Footer></Footer>
 
 </div>
 

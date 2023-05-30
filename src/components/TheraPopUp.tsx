@@ -26,9 +26,9 @@ import { UserContext, UserContextType } from '../App' ;
 
 const TheraPopUp = (props:any) =>{
 const { popup } = props;
-console.log("pop", popup)
+// console.log("pop", popup)
 const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };
-console.log('id test', userId)
+// console.log('id test', userId)
 type Details = {
   data: {
     result:{

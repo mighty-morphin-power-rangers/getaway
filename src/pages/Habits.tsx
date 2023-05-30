@@ -4,13 +4,7 @@ import HabitCreate from  '../components/Habits/HabitCreate'
 import { UserContext, UserContextType } from '../App';
 import axios from 'axios';
 import { Button, Card, Dialog, DialogTitle, DialogContent, CardContent, Grid, Typography} from '@mui/material';
-// import KebabDiningIcon from '@mui/icons-material/KebabDining';
-// import SkateboardingIcon from '@mui/icons-material/Skateboarding';
-// import PsychologyIcon from '@mui/icons-material/Psychology';
-// import SpaIcon from '@mui/icons-material/Spa';
-// import Popover from '@mui/material/Popover';
-// import Card from '@mui/material/Card';
-
+import Footer from '../components/Footer'
 interface Habits {
   id: number;
   habit_type: string;
@@ -25,7 +19,7 @@ const Habits = () =>{
 
   // creates user variables based on context
    const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };;
-   console.log(userName, userId)
+  //  console.log(userName, userId)
 const types:Option[] = [
   {
     type: "Exercise"
@@ -74,8 +68,17 @@ const types:Option[] = [
 
   return (
 <div style={{background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"}}>
-    <div style={{marginTop: '80px', textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", letterSpacing:"0.4em"}}>
-    <h3 style={{marginTop:"300px"}}>Growth</h3>
+    <div style={{
+      marginTop: '80px', 
+      textAlign:"center", 
+      display: "flex",
+      flexDirection: "column", 
+      alignItems: "center",    
+      fontSize:"20px",
+      color: "white",
+      textShadow: "2px #000000",
+      padding: '5%'}}>
+    <h3 style={{marginTop:"300px", fontSize:"70px",}}>growth</h3>
 <img src="https://i.ibb.co/0Vvjb9T/7718914-removebg-preview.png"  style={{height: '400px', width: '400px'}}></img>
     <p style={{width:'50%'}}>
          "Small habits lead to big growth - track your progress and see how far you've come."
@@ -95,23 +98,22 @@ const types:Option[] = [
     }}
   />
   
-<Card sx={{ 
-  borderRadius: '10px', 
-  backgroundColor: '#CCD7FF', 
-  // padding: '20px', 
-  height: '60vh', 
+<Card sx={{
+  borderRadius: '10px',
+  backgroundColor: '#CCD7FF',
+  // padding: '20px',
+  height: '60vh',
 
- 
-      
+
 }}>
       <CardContent>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} >
           <Grid item xs={12} sm={1}>
-            {/* First column */}
-            <Typography variant="h6">Options</Typography>
-            {/* Content for column 1 */}
-               <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
-  <Button variant="outlined" onClick={handleNewHabit}>New Habit</Button>
+          
+            {/* <Typography variant="h6">Options</Typography> */}
+          
+               <div style={{ display: 'flex', justifyContent: 'flex-start',}}>
+  <Button variant="outlined"  style ={{}}onClick={handleNewHabit}>New Habit</Button>
   {/* {showHabitCreate && <HabitCreate handleCreate={() => handleCreate()} />} */}
 <Dialog
   open={showHabitCreate}
@@ -195,6 +197,7 @@ boxShadow: 'none' ,
  
     <div style={{ marginBottom: '20px' }}></div>
     </div>
+    <Footer></Footer>
     </div>
   );
 };

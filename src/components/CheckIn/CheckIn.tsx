@@ -26,7 +26,7 @@ const CheckIn = () => {
   const [moodData, setMoodData] = useState<[]>([]);
 
   const FeelingSelector = (e: any) => {
-    console.log(e.target.textContent);
+    // console.log(e.target.textContent);
     // SetUserFeelings(e.target.textContent);
     const moodDescription = e.target.textContent;
     let moodColor = '';
@@ -70,7 +70,7 @@ const CheckIn = () => {
         }
       })
       .then((data) => {
-        console.log('Feeling submitted:', data);
+        // console.log('Feeling submitted:', data);
         setShowAlert(true);
         setTimeout(() => {
           setShowAlert(false);
@@ -139,7 +139,7 @@ const CheckIn = () => {
       }}
     >
       <div style={{padding:"150px"}}>
-      <h2 style={{marginTop:"200px"}}>HOW DO YOU FEEL IN THIS MOMENT</h2>
+      <h2 style={{marginTop:"340px"}}>HOW DO YOU FEEL IN THIS MOMENT</h2>
       <ButtonGroup
         variant='contained'
         aria-label='outlined primary button group'
@@ -147,25 +147,25 @@ const CheckIn = () => {
       >
         <Button
           onClick={FeelingSelector}
-          sx={{ background: '#0162BC', color: 'white' }}
+          sx={{ background: 'rgba(0, 191, 194, 1)', color: 'white', marginBottom: '5px' }}
         >
           High Energy, Pleasant
         </Button>
         <Button
           onClick={FeelingSelector}
-          sx={{ background: '#F16D5B', color: 'white' }}
+          sx={{ background: 'rgba(252, 110, 71, 1)', color: 'white', marginBottom: '5px' }}
         >
           High Energy, Unpleasant
         </Button>
         <Button
           onClick={FeelingSelector}
-          sx={{ background: '#6BB76A', color: 'white' }}
+          sx={{ background: '#6BB76A', color: 'white', marginBottom: '5px' }}
         >
           Low Energy, Pleasant
         </Button>
         <Button
           onClick={FeelingSelector}
-          sx={{ background: '#EF9073', color: 'black' }}
+          sx={{ background: 'rgba(255, 153, 158, 1)', color: 'white' }}
         >
           Low Energy, Unpleasant
         </Button>

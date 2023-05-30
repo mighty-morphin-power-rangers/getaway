@@ -41,8 +41,8 @@ const MoodPieChart: React.FC<MoodPieChartProps> = ({ data, width, height }) => {
     // sets actual colors i want
     const customColorScale = d3
       .scaleOrdinal<string>()
-      .domain(['Blue', 'Red', 'Green', 'Yellow'])
-      .range(['blue', 'red', 'green', 'yellow']);
+      .domain(['rgba(0, 191, 194, 1)', 'rgba(252, 110, 71, 1)', '#6BB76A', 'rgba(255, 153, 158, 1)'])
+      .range(['rgba(0, 191, 194, 1)', 'rgba(252, 110, 71, 1)', '#6BB76A', 'rgba(255, 153, 158, 1)']);
 
     const color = (key: string) => customColorScale(key) || 'black';
 
@@ -81,8 +81,8 @@ const MoodPieChart: React.FC<MoodPieChartProps> = ({ data, width, height }) => {
       .attr('dy', '.35em')
       .style('text-anchor', 'middle')
       .style('font-size', '.8rem')
-      .style('fill', (d) => (d.data.key === 'Yellow' ? 'black' : 'white')) // Change text color based on the background color
-      .text((d) => `${d.data.key} (${d.data.percentage.toFixed(2)}%)`);
+      .style('fill', (d) => (d.data.key === 'Yellow' ? 'white' : 'white')) // Change text color based on the background color
+      .text((d) => `(${d.data.percentage.toFixed(2)}%)`);
   }, [data, width, height]);
 
   return <svg ref={pieChartRef} width={width} height={height}></svg>;

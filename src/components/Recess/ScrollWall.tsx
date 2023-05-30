@@ -10,7 +10,7 @@ const ScrollWall = () => {
 const { userName, userId }: UserContextType = useContext(UserContext) ?? { userName: null, userId: null };;
 const [images, setImages] = useState<any[]>([]);
 const [loaded, setIsLoaded] = useState(false);
-console.log(userId)
+// console.log(userId)
   useEffect(() => {
     fetchImages();
   }, [userId]);
@@ -26,7 +26,7 @@ const fetchImages = (num = 10) => {
 
   axios.post('recommend/scroll', { data })
     .then((response) => {
-      console.log(response.data)
+      // console.log(response.data)
       setImages([...images, ...response.data]);
       setIsLoaded(true);
     });

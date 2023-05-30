@@ -41,7 +41,7 @@ return (
           */}
           {activeMarker === therapist && (
             <InfoWindow>
-              <div style={{backgroundColor:"black"}}>{therapist.name}</div>
+              <div style={{ color:"purple"}}>{therapist.name}</div>
             </InfoWindow>
           )}
         </Marker>
