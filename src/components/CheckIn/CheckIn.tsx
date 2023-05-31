@@ -135,7 +135,11 @@ const CheckIn = () => {
     <div
       style={{
         textAlign: 'center',
-        background: "linear-gradient(180deg, #FF8974 0%, #FF8974 20%, #FF9F69 100%)"
+        background: "linear-gradient(180deg, #FF8974 0%, #FF8974 20%, #FF9F69 100%)",
+           fontSize:"20px",
+    color: "white",
+    textShadow: "2px #000000",
+    padding: '5%'
       }}
     >
       <div style={{padding:"150px"}}>

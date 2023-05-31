@@ -82,7 +82,7 @@ const MoodPieChart: React.FC<MoodPieChartProps> = ({ data, width, height }) => {
       .style('text-anchor', 'middle')
       .style('font-size', '.8rem')
       .style('fill', (d) => (d.data.key === 'Yellow' ? 'white' : 'white')) // Change text color based on the background color
-      .text((d) => `(${d.data.percentage.toFixed(2)}%)`);
+      .text((d) => `${d.data.percentage.toFixed(0)}%`);
   }, [data, width, height]);
 
   return <svg ref={pieChartRef} width={width} height={height}></svg>;

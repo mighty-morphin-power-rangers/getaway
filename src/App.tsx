@@ -70,6 +70,27 @@ const App = () => {
 
   return (
     <UserContext.Provider value={{ userName, userId }}>
+         <style>
+    {`
+    ::-webkit-scrollbar {
+      width: 10px;
+      margin-right: 10px; /* Add margin to the right */
+      margin-left: 10px; /* Add margin to the right */
+      padding:30px;
+    }
+    ::-webkit-scrollbar-track {
+    
+      border-radies:30px;
+    }
+    ::-webkit-scrollbar-corner {
+  background: rgba(0,0,0,0);
+}
+    ::-webkit-scrollbar-thumb {
+      background-color: #7C92CB;
+      border-radius:30px;
+    }
+    `}
+  </style>
       <BrowserRouter>
         <div >
         {user && <NavBar />}

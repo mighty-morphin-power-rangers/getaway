@@ -16,7 +16,7 @@ const Music = () => {
         background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"
         }}
     >
-      <h1 style={{ fontSize: "70px", color: "white", marginTop: '450px',}}> Welcome To The Music Room </h1>
+      <h1 style={{ fontSize: "70px", color: "white", marginTop: '450px',}}> music room </h1>
       <p style={{ fontSize: "30px", color: "white" }}> <i>Here you can play on a virtual piano with your keys!</i> </p>
       <div>
         <Card>
