@@ -119,7 +119,7 @@ useEffect(() => {
     
     <div className="meditation-container" style={{ background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)", height: '160vh' }}>
          <div className="content-wrapper">
-         <h1 style={{ textAlign: "center", margin: "auto", fontSize: "70px", color: "white", }}>Meditation</h1>
+         <h1 style={{ textAlign: "center", margin: "auto", fontSize: "70px", color: "white", }}>meditation</h1>
       <p style={{ fontSize: "18px", textAlign: "center", margin: "auto" , color: "white"}}> <i> Welcome to the Meditation Station! If you're feeling stressed, anxious, or overwhelmed, you can come and enjoy some visualizations and go through various breathing exercises. </i> </p>
       <div className="exercise-container">
         <h2 style={{ fontSize: "30px", fontWeight: "bold", color: "white"}}>Select A Meditation Exercise :</h2>
