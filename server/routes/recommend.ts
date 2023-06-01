@@ -31,11 +31,30 @@ recommendRoutes.post('/scroll', async (req: any, res: any) => {
     'Ferns',
     'Flowers',
   ];
-
+console.log(req.body.data.googleId)
 
   const fetchImages = async (topic: string) => {
     console.log(topic)
-    
+    console.log(req.body.data.name)
+if (req.body.data.name === "Zachary"){
+  console.log("hi")
+   try {
+      const response = await axios.get(
+        'https://api.unsplash.com/photos/random?',
+        {
+          params: {
+            client_id: ZACH_API_KEY,
+            count: 10,
+            query: topic,
+          },
+        }
+      );
+      return response.data;
+    } catch (error) {
+      console.log('Error fetching images: ', error);
+      return [];
+    }
+} 
     try {
       const response = await axios.get(
         'https://api.unsplash.com/photos/random?',

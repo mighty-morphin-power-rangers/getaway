@@ -95,7 +95,7 @@ const getNextTwenty = () =>{
   return (
 <div style={{background: "linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)"}}>
     <div style={{ textAlign:"center", display: "flex", flexDirection: "column", alignItems: "center", color: "white"}}>
-    <h1 style={{marginTop:"300px", fontSize:"70px"}}>ITS OKAY TO ASK FOR HELP</h1>
+    <h1 style={{marginTop:"600px", fontSize:"70px"}}>ITS OKAY TO ASK FOR HELP</h1>
     <h2 style={{width:'50%'}}>
     If you’re thinking about suicide, are worried about a friend or loved one, or would like emotional support, the Lifeline network is available 24/7 across the United States.
     </h2>
@@ -124,7 +124,10 @@ const getNextTwenty = () =>{
     <h2 style={{textAlign: 'left', fontSize:'40px', }}>YOUR FAVORITES</h2>
     <FavTherapist />
     </div>
-<StaffList staff={staff}/>
+    <div style={{display: "flex", justifyContent: "center", padding:"60PX",backgroundColor: "#6BB76A", width: "100%"}}>
+    <h2 style={{textAlign: 'left', fontSize: '50px', padding:"5px"}}>STAFF THERAPISTS</h2>
+  <StaffList staff={staff}/>
+</div>
 <Footer></Footer>
     </div>
 
