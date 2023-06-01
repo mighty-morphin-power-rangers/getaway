@@ -5,6 +5,7 @@ const prisma = new PrismaClient();
 import axios from 'axios';
 const GOOGLE_PLACES_API = process.env.GOOGLE_PLACES_API;
 const UNSPLASH_API_KEY = process.env.UNSPLASH_API_KEY;
+const ZACH_API_KEY = process.env.ZACH_API_KEY;
 
 recommendRoutes.get('/', async (req: any, res: any) => {
   try {
@@ -34,6 +35,7 @@ recommendRoutes.post('/scroll', async (req: any, res: any) => {
 
   const fetchImages = async (topic: string) => {
     console.log(topic)
+    
     try {
       const response = await axios.get(
         'https://api.unsplash.com/photos/random?',
