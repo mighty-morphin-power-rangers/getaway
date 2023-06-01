@@ -67,9 +67,19 @@ const App = () => {
   }, []);
 
   // console.log(user);
+  const ScrollToTop:Function = () => {
+    const { pathname } = useLocation();
+
+    useEffect(() => {
+      window.scrollTo(0, 0);
+    }, [pathname]);
+
+    return null;
+  }
 
   return (
     <UserContext.Provider value={{ userName, userId }}>
+
          <style>
     {`
     ::-webkit-scrollbar {
@@ -79,7 +89,7 @@ const App = () => {
       padding:30px;
     }
     ::-webkit-scrollbar-track {
-    
+
       border-radies:30px;
     }
     ::-webkit-scrollbar-corner {
@@ -92,6 +102,7 @@ const App = () => {
     `}
   </style>
       <BrowserRouter>
+      <ScrollToTop />
         <div >
         {user && <NavBar />}
           <Routes>
@@ -123,7 +134,7 @@ const App = () => {
             {/* <Route path='/profile' element={<Profile />} /> */}
              {/* <Footer></Footer> */}
           </Routes>
-          
+
           <MusicBar />
           <ScrollToTopFab />
         </div>
