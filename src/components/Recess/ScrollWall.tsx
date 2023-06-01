@@ -22,6 +22,7 @@ const fetchImages = (num = 10) => {
 
   const data = {
     googleId: userId.toString(),
+    name: userName
   };
 
   axios.post('recommend/scroll', { data })
