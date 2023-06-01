@@ -111,6 +111,7 @@ useEffect(()=>{
       }
     }).then(()=>{
       console.log("saved!")
+      getDetails()
     })
     .catch((err:Error)=>{
       console.error("failed to save therapist", err)
