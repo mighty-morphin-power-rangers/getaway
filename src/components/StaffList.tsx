@@ -55,7 +55,7 @@ const { staff } = props
   <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
         {staff.map((therapist:any) => (
          <Grid item key={therapist.place_id} xs={4} sm={4} md={4} lg={4} style={{ width:"250px", height: "350px", overflow: "hidden" }}>
-          <Link to="/therapist-profile"  state={{therapist: therapist}}>
+          <Link to="/therapist-profile"  state={{therapist: therapist}} style={{ textDecoration: 'none' }}>
           <Staff key={therapist.place_id} therapist ={therapist} handleOpen={handleOpen} />
           </Link>
           </Grid>
